@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:title" content="">
+        <meta property="og:type" content="">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <meta name="theme-color" content="#fafafa">
+    </head>
+</html>
+<body>
+    <!-- face-api.js -->
+    <script src="js/face-api.min.js"></script>
+
+    <!-- テストに使用する画像 -->
+    <img id="img" src="face.jpg"></img>
+
+    <script>
+    // 画像の取得
+    const img = document.getElementById('img')
+
+    const app = async () => {
+        // モデルの読み込み
+        await faceapi.nets.tinyFaceDetector.load("models/");
+
+        // 顔検出の実行
+        const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
+        
+        // 結果の出力
+        console.log(detections);
+    }
+    app()
+    </script>
+</body>
+
