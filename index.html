@@ -55,7 +55,7 @@
           
             
             /* Display detected face bounding boxes */
-            const detections = await faceapi.detectAllFaces(img)
+            const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
             document.getElementById('isConvert').innerText='顔検出完了';
             // resize the detected boxes in case your displayed image has a different size than the original
             //const resizedDetections = faceapi.resizeResults(detections, displaySize)
