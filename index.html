@@ -43,10 +43,7 @@
         // 画像の取得
         const img = document.getElementById('img')
 
-        const displaySize = { width: img.width, height: img.height }
-        // resize the overlay canvas to the input dimensions
-        const canvas = document.getElementById('overlay')
-        faceapi.matchDimensions(canvas, displaySize)
+
 
         const app = async () => {
             // モデルの読み込み
@@ -61,9 +58,9 @@
             const detections = await faceapi.detectAllFaces(img)
             document.getElementById('isConvert').innerText='顔検出完了';
             // resize the detected boxes in case your displayed image has a different size than the original
-            const resizedDetections = faceapi.resizeResults(detections, displaySize)
+            //const resizedDetections = faceapi.resizeResults(detections, displaySize)
             // draw detections into the canvas
-            faceapi.draw.drawDetections(canvas, resizedDetections)
+            //faceapi.draw.drawDetections(canvas, resizedDetections)
             // 結果の出力
             console.log(detections);
         }
