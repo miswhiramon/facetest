@@ -45,7 +45,7 @@
             document.getElementById('isConvert').innerText='顔検出中';
 
             // 顔検出の実行
-            const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
+            //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
 
             const displaySize = { width: img.width, height: img.height }
             // resize the overlay canvas to the input dimensions
@@ -53,7 +53,11 @@
             faceapi.matchDimensions(canvas, displaySize)
             
             /* Display detected face bounding boxes */
-            detections = await faceapi.detectAllFaces(img)
+            const detections = await faceapi.detectAllFaces(img)
+            // resize the detected boxes in case your displayed image has a different size than the original
+            const resizedDetections = faceapi.resizeResults(detections, displaySize)
+            // draw detections into the canvas
+            faceapi.draw.drawDetections(canvas, resizedDetections)
             // 結果の出力
             console.log(detections);
         }
