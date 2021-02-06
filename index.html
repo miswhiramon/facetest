@@ -42,7 +42,7 @@
         const app = async () => {
             // モデルの読み込み
             await faceapi.nets.tinyFaceDetector.load("models/");
-            document.getElementById('isConvert').innerText="顔検出中"
+            document.getElementById('isConvert').innerText='顔検出中';
 
             // 顔検出の実行
             const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
