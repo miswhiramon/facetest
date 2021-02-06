@@ -53,7 +53,7 @@
             faceapi.matchDimensions(canvas, displaySize)
             
             /* Display detected face bounding boxes */
-            const detections = await faceapi.detectAllFaces(img)
+            detections = await faceapi.detectAllFaces(img)
             // 結果の出力
             console.log(detections);
         }
