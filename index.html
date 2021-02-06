@@ -24,26 +24,31 @@
     <!-- face-api.js -->
     <script src="js/face-api.min.js"></script>
     <!-- model js -->
-    <script src="models/tiny_face_detector_model-weights_manifest.json"></script>
+    <!--
+        <script src="models/tiny_face_detector_model-weights_manifest.json"></script>
+
+    -->
+    
 
     <!-- テストに使用する画像 -->
     <img id="img" src="face.jpg"></img>
 
     <script>
-    // 画像の取得
-    const img = document.getElementById('img')
+        // 画像の取得
+        const img = document.getElementById('img')
 
-    const app = async () => {
-        // モデルの読み込み
-        await faceapi.nets.tinyFaceDetector.load("models/");
+        const app = async () => {
+            // モデルの読み込み
+            await faceapi.nets.tinyFaceDetector.load("models/");
 
-        // 顔検出の実行
-        const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
+            // 顔検出の実行
+            const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
+            
+            // 結果の出力
+            console.log(detections);
+        }
         
-        // 結果の出力
-        console.log(detections);
-    }
-    app()
+        app()
     </script>
 </body>
 
