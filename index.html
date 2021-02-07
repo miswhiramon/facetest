@@ -19,6 +19,9 @@
 
         <meta name="theme-color" content="#fafafa">
 
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+
+
         <style>
             canvas {
                 position: absolute;
@@ -47,10 +50,6 @@
         </div>
 
         <script>
-            // import nodejs bindings to native tensorflow,
-            // not required, but will speed up things drastically (python required)
-            import '@tensorflow/tfjs-node';
-            import * as faceapi from './js/face-api.js';
             // 画像の取得
             const img = document.getElementById('img')
 
