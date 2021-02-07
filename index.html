@@ -89,7 +89,7 @@
             const app = async () => {
                 // モデルの読み込み
                 await faceapi.nets.tinyFaceDetector.load("models/");
-                document.getElementById('isConvert').innerText='顔検出中';
+                //document.getElementById('isConvert').innerText='顔検出中';
 
 
 
@@ -107,7 +107,7 @@
                 const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
                 const endTime = Date.now(); // 終了時間
                 console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
-                document.getElementById('isConvert').innerText='顔検出完了';
+                //document.getElementById('isConvert').innerText='顔検出完了';
                 // resize the detected boxes in case your displayed image has a different size than the original
                 const resizedDetections = faceapi.resizeResults(detections, displaySize)
                 console.log(resizedDetections)
