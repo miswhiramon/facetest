@@ -47,6 +47,10 @@
         </div>
 
         <script>
+            // import nodejs bindings to native tensorflow,
+            // not required, but will speed up things drastically (python required)
+            import '@tensorflow/tfjs-node';
+            import * as faceapi from 'face-api.js';
             // 画像の取得
             const img = document.getElementById('img')
 
