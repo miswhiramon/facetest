@@ -34,11 +34,14 @@
     <body>
         <!-- face-api.js -->
         <script src="js/face-api.min.js"></script>
-        <!-- model js -->
-        <!--
-            <script src="models/tiny_face_detector_model-weights_manifest.json"></script>
-
-        -->
+        
+        <div id="file_upload" class="file-upload">
+            <div id="prev" class="prev" data-file-image></div>
+            <label class="imgfile btn" for="imgfile">
+                <input class="imgfile__input" type="file" id="imgfile">
+                <div class="imgfile__button">画像選択する</div>
+            </label>
+        </div>
         
         <div id="isConvert">顔検知中</div>
 
