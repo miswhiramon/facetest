@@ -58,7 +58,6 @@
             const app = async () => {
                 // モデルの読み込み
                 await faceapi.nets.tinyFaceDetector.load("models/");
-                await faceapi.nets.ssdMobilenetv1.load("models/");
                 document.getElementById('isConvert').innerText='顔検出中';
 
                 // 顔検出の実行
@@ -72,8 +71,7 @@
                 
                 /* Display detected face bounding boxes */
                 //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
-                //const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
-                const detections = await faceapi.detectSingleFace(img, new faceapi.SsdMobilenetv1Options())
+                const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
                 const endTime = Date.now(); // 終了時間
                 console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
                 document.getElementById('isConvert').innerText='顔検出完了';
