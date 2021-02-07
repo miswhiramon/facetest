@@ -35,6 +35,14 @@
         <!-- face-api.js -->
         <script src="js/face-api.min.js"></script>
         
+        
+        
+        <div id="isConvert">顔検知中</div>
+
+        <!-- テストに使用する画像 -->
+        <img id="img" src="face.jpg"></img>
+        <canvas id="overlay"></canvas>
+
         <div id="file_upload" class="file-upload">
             <div id="prev" class="prev" data-file-image></div>
             <label class="imgfile btn" for="imgfile">
@@ -42,12 +50,6 @@
                 <div class="imgfile__button">画像選択する</div>
             </label>
         </div>
-        
-        <div id="isConvert">顔検知中</div>
-
-        <!-- テストに使用する画像 -->
-        <img id="img" src="face.jpg"></img>
-        <canvas id="overlay"></canvas>
 
         
         </div>
@@ -56,10 +58,7 @@
             // 画像の取得
             const img = document.getElementById('img')
 
-            $('#imgfile').on('change', function (e) {
-                displayInputFilePreview(e)
-            });
-
+            
             function displayInputFilePreview(e) {
                 const file = e.target.files[0];
                 loadImage.parseMetaData(file, function (data) {
