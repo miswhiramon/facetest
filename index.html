@@ -56,6 +56,30 @@
             // 画像の取得
             const img = document.getElementById('img')
 
+            $('#imgfile').on('change', function (e) {
+                displayInputFilePreview(e)
+            });
+
+            function displayInputFilePreview(e) {
+                const file = e.target.files[0];
+                loadImage.parseMetaData(file, function (data) {
+                    var options = {
+                        maxHeight: 1024,
+                        maxWidth: 1024,
+                        canvas: true
+                    };
+                    if (data.exif) {
+                        options.orientation = data.exif.get('Orientation');
+                    }
+                    loadImage(file, function (data) {
+                        var dataUri = data.toDataURL('image/jpeg');
+                        $('#prev')
+                                .attr('data-file-image', dataUri)
+                                .css('background-image', 'url(' + dataUri + ')');
+                    }, options);
+                });
+            }
+
             
 
             const app = async () => {
