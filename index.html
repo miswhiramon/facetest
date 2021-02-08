@@ -120,7 +120,8 @@
                 var y = parseInt(resizedDetections._box._y)
                 // draw detections into the canvas
                 faceapi.draw.drawDetections(canvas, resizedDetections)
-                test(x,y,w,h)
+                var tensor = test(x,y,w,h)
+                model=await tf.loadModel('tfmodel/model.json')
                 // 結果の出力
                 console.log(detections);
                 const trimimg=document.getElementById('sample')
@@ -136,6 +137,8 @@
                     //元イメージの座標(x, y)から幅w高さhの範囲を使用して、座標(10, 10)の位置に、サイズ200×50でイメージを表示
                     context.drawImage(img, x, y, w, h, 0, 0, 100, 100);
                 }
+                tensor_image=preprocessImage(canvas);
+                return tensor_image;
             }
 
             function preprocessImage(image){
