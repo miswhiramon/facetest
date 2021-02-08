@@ -127,12 +127,12 @@
                 var y = parseInt(resizedDetections._box._y)
                 // draw detections into the canvas
                 faceapi.draw.drawDetections(canvas, resizedDetections)
-                test()
+                test(x,y,w,h)
                 // 結果の出力
                 console.log(detections);
             }
 
-            function test() {
+            function test(x,y,w,h) {
                 //描画コンテキストの取得
                 var canvas = document.getElementById('sample');
                 if (canvas.getContext) {
