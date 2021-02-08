@@ -68,7 +68,7 @@
                         const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
                         const canvas = document.createElement('canvas');
                         const ctx = canvas.getContext('2d');
-                        ctx.drawImage(imgReader,0,0,100,100);
+                        ctx.drawImage(imgReader,0,0,256,256);
                         img2.src = canvas.toDataURL(imgType);
                     }
                     imgReader.src = reader.result;
