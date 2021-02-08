@@ -60,6 +60,11 @@
 
             const fileup = (e) => {
                 console.log(e)
+
+                const reader = new FileReader();
+                const imgReader = new Image();
+
+                reader.readAsDataURL(e.files[0]);
             }
 
             const app = async () => {
