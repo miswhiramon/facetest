@@ -70,6 +70,7 @@
                         ctx.drawImage(imgReader,0,0,256,256);
                         img2.src = canvas.toDataURL(imgType);
                     }
+                    imgReader.src = reader.result;
                 }
                 reader.readAsDataURL(e.files[0]);
             }
