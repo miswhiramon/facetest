@@ -137,6 +137,12 @@
                     context.drawImage(img, x, y, w, h, 0, 0, 100, 100);
                 }
             }
+
+            function preprocessImage(image){
+                let tensor = tf.fromPixels(image).resizeNearestNeighbor([128,128]).toFloat();
+                let offset = tf.scalar(255);
+                return tensor.div(offset).expandDims();
+            }
             
             app()
         </script>
