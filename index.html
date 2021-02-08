@@ -47,44 +47,16 @@
         <h3>トリミング後</h3>
         <canvas width="100" height="100" id="sample" style="background-color:yellow;"></canvas>
 
-        <div id="file_upload" class="file-upload">
-            <div id="prev" class="prev" data-file-image></div>
-            <label class="imgfile btn" for="imgfile">
-                <input class="imgfile__input" type="file" id="imgfile">
-                <div class="imgfile__button">画像選択する</div>
-            </label>
-        </div>
+        ファイル：<input type="file" accept="image/jpeg,image/png,image/gif" onchange="fileup(this)" />
 
         
         </div>
 
         <script>
+            //参考：https://tech-it.r-net.info/program/javascript/265/
+            //
             // 画像の取得
             const img = document.getElementById('img')
-
-            $('#imgfile').on('change', function (e) {
-                displayInputFilePreview(e)
-            });
-            
-            function displayInputFilePreview(e) {
-                const file = e.target.files[0];
-                loadImage.parseMetaData(file, function (data) {
-                    var options = {
-                        maxHeight: 1024,
-                        maxWidth: 1024,
-                        canvas: true
-                    };
-                    if (data.exif) {
-                        options.orientation = data.exif.get('Orientation');
-                    }
-                    loadImage(file, function (data) {
-                        var dataUri = data.toDataURL('image/jpeg');
-                        $('#prev')
-                                .attr('data-file-image', dataUri)
-                                .css('background-image', 'url(' + dataUri + ')');
-                    }, options);
-                });
-            }
 
             
 
