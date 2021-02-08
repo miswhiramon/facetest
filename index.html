@@ -60,7 +60,7 @@
 
             const fileup = (e) => {
                 console.log(e)
-                const img2 = document.getElementById('selectImg');
+                const img2 = document.getElementById('img');
                 const reader = new FileReader();
                 const imgReader = new Image();
                 reader.onloadend = () => {
@@ -71,7 +71,6 @@
                         img2.src = canvas.toDataURL(imgType);
                     }
                 }
-
                 reader.readAsDataURL(e.files[0]);
             }
 
