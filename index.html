@@ -122,11 +122,13 @@
                 faceapi.draw.drawDetections(canvas, resizedDetections)
                 var tensor = test(x,y,w,h)
                 model=await tf.loadModel('tfmodel/model.json')
+                var prediction = await model.predict(tensor)
+                console.log(prediction)
                 // 結果の出力
-                console.log(detections);
-                const trimimg=document.getElementById('sample')
-                console.log(trimimg.width)
-                console.log(trimimg.height)
+                //console.log(detections);
+                //const trimimg=document.getElementById('sample')
+                //console.log(trimimg.width)
+                //console.log(trimimg.height)
             }
 
             function test(x,y,w,h) {
