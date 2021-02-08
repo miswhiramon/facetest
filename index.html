@@ -121,10 +121,25 @@
                 console.log(parseInt(resizedDetections._box._width))
                 console.log(parseInt(resizedDetections._box._x))
                 console.log(parseInt(resizedDetections._box._y))
+                var h = parseInt(resizedDetections._box._height)
+                var w = parseInt(resizedDetections._box._width)
+                var x = parseInt(resizedDetections._box._x)
+                var y = parseInt(resizedDetections._box._y)
                 // draw detections into the canvas
                 faceapi.draw.drawDetections(canvas, resizedDetections)
+                test()
                 // 結果の出力
                 console.log(detections);
+            }
+
+            function test() {
+                //描画コンテキストの取得
+                var canvas = document.getElementById('sample');
+                if (canvas.getContext) {
+                    var context = canvas.getContext('2d');
+                    //元イメージの座標(x, y)から幅w高さhの範囲を使用して、座標(10, 10)の位置に、サイズ200×50でイメージを表示
+                    context.drawImage(img, x, y, w, h, 0, 0, 100, 100);
+                }
             }
             
             app()
