@@ -44,6 +44,7 @@
         <img id="img" src="face.jpg"></img>        
         <canvas id="overlay"></canvas>
         <h3>トリミング後</h3>
+        <img id="selectImg"></img>
         <canvas width="100" height="100" id="sample" style="background-color:yellow;"></canvas>
 
         ファイル：<input type="file" accept="image/jpeg,image/png,image/gif" onchange="fileup(this)" />
@@ -59,7 +60,7 @@
 
             const fileup = (e) => {
                 console.log(e)
-                const img = document.getElementById('img');
+                const img = document.getElementById('selectImg');
                 const reader = new FileReader();
                 const imgReader = new Image();
                 reader.onloadend = () => {
