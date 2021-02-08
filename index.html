@@ -112,6 +112,8 @@
                 // resize the detected boxes in case your displayed image has a different size than the original
                 const resizedDetections = faceapi.resizeResults(detections, displaySize)
                 console.log(resizedDetections)
+                console.log(resizedDetections._box._height)
+                console.log(resizedDetections._box._width)
                 // draw detections into the canvas
                 faceapi.draw.drawDetections(canvas, resizedDetections)
                 // 結果の出力
