@@ -126,7 +126,17 @@
                 model=await tf.loadLayersModel('tfmodel/model.json')
                 prediction = await model.predict(tensor)
                 console.log(prediction.shape)
+                
                 console.log(prediction.unstack(0)[0])
+                prediction=prediction.unstack(0)[0]
+                var image = await tf.cast(prediction,tf.uint8)
+                var transImage = await tf.raw_ops.EncodePng(
+                    image,compression=-1
+                )
+                var result = document.getElementById('img');
+                result.src = transImage
+                
+
                 // 結果の出力
                 //console.log(detections);
                 //const trimimg=document.getElementById('sample')
