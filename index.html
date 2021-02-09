@@ -130,11 +130,15 @@
                 console.log(prediction.unstack(0)[0])
                 prediction=prediction.unstack(0)[0]
                 var image = prediction.toInt();
-                var transImage = await tf.node.encodeJpeg(
-                    image
-                )
-                var result = document.getElementById('img');
-                result.src = transImage
+                var transImage = tf.browser.toPixels(image)
+                var canvas = document.getElementById('sample');
+                if (canvas.getContext) {
+                    var context = canvas.getContext('2d');
+                    //元イメージの座標(x, y)から幅w高さhの範囲を使用して、座標(10, 10)の位置に、サイズ200×50でイメージを表示
+                    context.drawImage(img, 0, 0, 128, 128, 0, 0, 100, 100);
+                }
+                //var result = document.getElementById('img');
+                //result.src = transImage
                 
 
                 // 結果の出力
