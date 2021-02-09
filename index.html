@@ -61,7 +61,7 @@
 
             const fileup = (e) => {
                 console.log(e)
-                const img2 = document.getElementById('selectImg');
+                const img2 = document.getElementById('img');
                 const reader = new FileReader();
                 const imgReader = new Image();
                 reader.onloadend = () => {
@@ -79,15 +79,13 @@
                     imgReader.src = reader.result;
                 }
                 reader.readAsDataURL(e.files[0]);
+                app()
             }
 
             const app = async () => {
                 // モデルの読み込み
                 await faceapi.nets.tinyFaceDetector.load("models/");
                 //document.getElementById('isConvert').innerText='顔検出中';
-
-
-
                 // 顔検出の実行
                 //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
                 const displaySize = { width: img.width, height: img.height }
@@ -150,7 +148,6 @@
                 return tensor.div(offset).expandDims();
             }
             
-            app()
         </script>
     </body>
 </html>
