@@ -54,6 +54,7 @@
         </div>
 
         <script>
+            var prediction
             //参考：https://tech-it.r-net.info/program/javascript/265/
             //
             // 画像の取得
@@ -123,7 +124,7 @@
                 faceapi.draw.drawDetections(canvas, resizedDetections)
                 var tensor = test(x,y,w,h)
                 model=await tf.loadLayersModel('tfmodel/model.json')
-                var prediction = await model.predict(tensor)
+                prediction = await model.predict(tensor)
                 console.log(prediction.shape)
                 console.log((prediction.unstack(0)).shape)
                 // 結果の出力
