@@ -130,7 +130,7 @@
                 console.log(prediction.unstack(0)[0])
                 prediction=prediction.unstack(0)[0]
                 let offset = tf.scalar(255);
-                prediction=tf.mul(offset);
+                prediction=prediction.mul(offset);
                 var image = prediction.toInt();
                 var transImage = tf.browser.toPixels(image)
                 if (canvas.getContext) {
