@@ -121,7 +121,7 @@
                 // draw detections into the canvas
                 faceapi.draw.drawDetections(canvas, resizedDetections)
                 var tensor = test(x,y,w,h)
-                model=await tf.loadModel('tfmodel/model.json')
+                model=await tf.loadLayersModel('tfmodel/model.json')
                 var prediction = await model.predict(tensor)
                 console.log(prediction)
                 // 結果の出力
