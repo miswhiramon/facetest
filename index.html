@@ -163,6 +163,7 @@
             }
 
             function preprocessImage(image){
+                //このあたりの処理内容オフセット等を学習時と一致させる。
                 let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([128,128]).toFloat();
                 let offset = tf.scalar(255);
                 return tensor.div(offset).expandDims();
