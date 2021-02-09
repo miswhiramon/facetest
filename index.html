@@ -131,9 +131,7 @@
                 prediction=prediction.unstack(0)[0]
                 let offset = tf.scalar(255);
                 prediction=prediction.mul(offset);
-                var image = prediction.toInt();  
-                var image = prediction.clipByValue(0,255)
-                var image = prediction.toInt();                
+                var image = prediction.clipByValue(0,255).toInt();     
                 var transImage = tf.browser.toPixels(image)
                 if (canvas.getContext) {
                     var context = canvas.getContext('2d');
