@@ -130,8 +130,8 @@
                 console.log(prediction.unstack(0)[0])
                 prediction=prediction.unstack(0)[0]
                 var image = prediction.toInt();
-                var transImage = await tf.raw_ops.EncodePng(
-                    image,compression=-1
+                var transImage = await tf.node.encodeJpeg(
+                    image
                 )
                 var result = document.getElementById('img');
                 result.src = transImage
