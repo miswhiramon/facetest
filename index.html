@@ -129,7 +129,7 @@
                 
                 console.log(prediction.unstack(0)[0])
                 prediction=prediction.unstack(0)[0]
-                var image = prediction.toInt
+                var image = prediction.toInt();
                 var transImage = await tf.raw_ops.EncodePng(
                     image,compression=-1
                 )
