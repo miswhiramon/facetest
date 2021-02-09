@@ -55,6 +55,7 @@
 
         <script>
             var prediction
+            var transImage
             //参考：https://tech-it.r-net.info/program/javascript/265/
             //
             // 画像の取得
@@ -132,7 +133,7 @@
                 let offset = tf.scalar(255);
                 prediction=prediction.mul(offset);
                 var image = prediction.clipByValue(0,255).toInt();     
-                var transImage = tf.browser.toPixels(image)
+                transImage = tf.browser.toPixels(image)
                 if (canvas.getContext) {
                     var context = canvas.getContext('2d');
                     //元イメージの座標(x, y)から幅w高さhの範囲を使用して、座標(10, 10)の位置に、サイズ200×50でイメージを表示
