@@ -131,8 +131,9 @@
                 
                 console.log(prediction.unstack(0)[0])
                 prediction=prediction.unstack(0)[0]
-                let offset = tf.scalar(255);
-                prediction=prediction.mul(offset);
+                let offset_mul = tf.scalar(127.5);
+                let offset_add = tf.scalar(1);
+                prediction=prediction.add(offset_add).mul(offset_mul);
                 var image = prediction.clipByValue(0,255).toInt();     
                 transImage = tf.browser.toPixels(image,canvas)
                 
@@ -163,8 +164,9 @@
             function preprocessImage(image){
                 //このあたりの処理内容オフセット等を学習時と一致させる。
                 let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([128,128]).toFloat();
-                let offset = tf.scalar(255);
-                return tensor.div(offset).expandDims();
+                let offset_div = tf.scalar(127.5);
+                let offset_sub = tf.scalar(1);
+                return tensor.div(offset_div).sub(offset_sub).expandDims();
             }
             
         </script>
