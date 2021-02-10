@@ -57,6 +57,27 @@
         <script>
             var prediction
             var transImage
+
+            class InstanceNormalization extends tf.layers.Layer {
+                static className = 'InstanceNormalization';
+                constructor(config) {
+                    super(config);
+                }
+
+                /**
+                 * The static className getter is required by the 
+                 * registration step (see below).
+                 */
+                static get className() {
+                    return 'InstanceNormalization';
+                }
+            }
+            /**
+             * Regsiter the custom layer, so TensorFlow.js knows what class constructor
+             * to call when deserializing an saved instance of the custom layer.
+             */
+            tf.serialization.registerClass(InstanceNormalization);
+
             //参考：https://tech-it.r-net.info/program/javascript/265/
             //
             // 画像の取得
