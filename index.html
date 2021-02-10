@@ -133,12 +133,8 @@
                 let offset = tf.scalar(255);
                 prediction=prediction.mul(offset);
                 var image = prediction.clipByValue(0,255).toInt();     
-                transImage = tf.browser.toPixels(image)
-                if (canvas.getContext) {
-                    var context = canvas.getContext('2d');
-                    //元イメージの座標(x, y)から幅w高さhの範囲を使用して、座標(10, 10)の位置に、サイズ200×50でイメージを表示
-                    context.drawImage(transImage, 0, 0, 128, 128, 0, 0, 100, 100);
-                }
+                transImage = tf.browser.toPixels(image,canvas)
+                
                 //var result = document.getElementById('img');
                 //result.src = transImage
                 
