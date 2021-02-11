@@ -143,6 +143,7 @@
                         console.log(this.gamma.read())
                         console.log(this.gamma.read().shape)
                         var broadcast_gamma;
+                        var broadcast_beta;
                         if (this.scale){
                             broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
                             normed = normed.mul(broadcast_gamma)
