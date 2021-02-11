@@ -134,7 +134,7 @@
                         //del reduction_axes[0]
 
                         var mean = tf.mean(input[0], [-1],true)
-                        var stddev = tf.moments(input[0], [-1],true).variance.sqrt() + this.epsilon
+                        var stddev = tf.moments(input[0], [-1],true).variance.sqrt().add(this.epsilon)
                         var normed = (input[0] - mean) / stddev ;
                         console.log("mean,stddev,normed->")
                         console.log(mean)
