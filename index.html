@@ -134,7 +134,7 @@
                         var stddev = tf.moments(input[0], reduction_axes,true).variance.sqrt() + this.epsilon
                         var normed = (input[0] - mean) / stddev
 
-                        broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
+                        var broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
                         if (this.axis != null){
                             broadcast_shape[this.axis] = input_shape[this.axis]
                         }                            
