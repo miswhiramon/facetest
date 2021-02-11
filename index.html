@@ -135,7 +135,7 @@
 
                         var mean = tf.mean(input[0], axis=[-1],true)
                         var stddev = tf.moments(input[0], axis=[-1],true).variance.sqrt() + this.epsilon
-                        var normed = (input[0] - mean) / stddev
+                        var normed = (input[0] - mean) / stddev 
 
                         var broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
                         
