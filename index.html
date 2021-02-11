@@ -131,8 +131,8 @@
 
                         //del reduction_axes[0]
 
-                        var mean = tf.mean(input[0], 3,true)
-                        var stddev = tf.moments(input[0], 3,true).variance.sqrt().add(this.epsilon)
+                        var mean = tf.mean(input[0], [-1],true)
+                        var stddev = tf.moments(input[0], [-1],true).variance.sqrt().add(this.epsilon)
                         var normed = ((input[0]).sub(mean)).div(stddev);
                         console.log("mean,stddev,normed->")
                         console.log(mean)
@@ -160,20 +160,18 @@
                             broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
                             normed = normed.mul(broadcast_beta)
                         }*/
-                        console.log(normed)
-                        console.log(normed.length)
                         return normed
                     });
                 }
 
                 getConfig() {
                     const config = super.getConfig();
-                    Object.assign(config,{
+                    /*Object.assign(config,{
                         axis:this.axis,
                         epsilon:this.epsilon,
                         center:this.center,
                         scale:this.scale
-                    })
+                    })*/
                     return config;
                 }
 
