@@ -77,11 +77,10 @@
 
                 build(inputShape) {
                     const ndim = inputShape.length;
-                    console.log("Build:inputShape/ndim:")
+                    /*console.log("Build:inputShape/ndim:")
                     console.log(inputShape)
-                    console.log(ndim)
+                    console.log(ndim)*/
 
-                    //this.input_spec = tf.input({shape:ndim})
                     var shape;
                     if (this.axis==null){
                         shape = [1]
