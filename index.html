@@ -86,7 +86,6 @@
                     if (this.axis==null){
                         shape = [1]
                     }else{
-                        //shape = (inputShape[this.axis],)
                         shape=tf.tensor([inputShape[this.axis]])
                     }
                     console.log("SHAPE:")
@@ -113,8 +112,6 @@
                     }else{
                         this.beta = null;
                     }
-                        
-                    this.built = true
                 }
 
                 call(input) {
@@ -154,7 +151,7 @@
 
                         if (this.center){
                             broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
-                            normed = normed.mul(broadcast_beta)
+                            normed = normed.add(broadcast_beta)
                         }
                         return normed
                     });
