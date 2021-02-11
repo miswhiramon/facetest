@@ -138,6 +138,8 @@
                         var normed = (input[0] - mean) / stddev
 
                         var broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
+                        var copy_gamma = this.gamma.read();
+                        copy_gamma = tf.fill([4],copy_gamma)
                         
                         if (this.axis != null){
                             broadcast_shape[this.axis] = input_shape[this.axis]
