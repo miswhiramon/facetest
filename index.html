@@ -77,7 +77,7 @@
                 }
 
                 build(inputShape) {
-                    const ndim = inputShape[0][channelAxis];
+                    const ndim = inputShape[0];//[channelAxis];
 
                     ndim = len(input_shape)
                     this.input_spec = InputSpec({ndim:ndim})
