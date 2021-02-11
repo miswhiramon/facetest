@@ -149,7 +149,8 @@
                         console.log(this.gamma.read())
                         console.log(this.gamma.read().shape)
                         if (this.scale){
-                            broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
+                            //broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
+                            broadcast_gamma = tf.reshape(copy_gamma, broadcast_shape)
                             normed = normed.mul(broadcast_gamma)
                         }
                             
