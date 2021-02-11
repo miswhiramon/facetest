@@ -116,10 +116,7 @@
 
                 call(input) {
                     return tf.tidy(() => {
-                        console.log(input[0])
                         const input_shape = input[0].shape;
-                        console.log(input_shape)
-                        //const reduction_axes = tf.range(1,input_shape.length,1);
                         const reduction_axes = input_shape.length-1;
 
                         var mean = tf.mean(input[0], reduction_axes,true)
