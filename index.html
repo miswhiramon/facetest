@@ -152,15 +152,21 @@
                         }
                             
                         if (this.center){
-                            broadcast_beta = tf.reshape(this.beta, broadcast_shape)
+                            broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
                             normed = normed.mul(broadcast_beta)
-                        }                       
+                        }
                         return normed
                     });
                 }
 
                 getConfig() {
                     const config = super.getConfig();
+                    Object.assign(config,{
+                        axis:this.axis,
+                        epsilon:this.epsilon,
+                        center:this.center,
+                        scale:this.scale
+                    })
                     return config;
                 }
 
