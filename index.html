@@ -121,18 +121,9 @@
                         console.log(input_shape)
                         //const reduction_axes = tf.range(1,input_shape.length,1);
                         const reduction_axes = input_shape.length-1;
-                        console.log("reduction_axes->")
-                        console.log(reduction_axes)
-                        //const reduction_axes = tf.range(0,input_shape.length,1);//list(range(0, len(input_shape)))
 
-                        /*if (this.axis != null){
-                            del reduction_axes[this.axis]
-                        }*/
-
-                        //del reduction_axes[0]
-
-                        var mean = tf.mean(input[0], [-1],true)
-                        var stddev = tf.moments(input[0], [-1],true).variance.sqrt().add(this.epsilon)
+                        var mean = tf.mean(input[0], reduction_axes,true)
+                        var stddev = tf.moments(input[0], reduction_axes,true).variance.sqrt().add(this.epsilon)
                         var normed = ((input[0]).sub(mean)).div(stddev);
                         console.log("mean,stddev,normed->")
                         console.log(mean)
@@ -221,8 +212,6 @@
                 // モデルの読み込み
                 await faceapi.nets.tinyFaceDetector.load("models/");
                 //document.getElementById('isConvert').innerText='顔検出中';
-
-
 
                 // 顔検出の実行
                 //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
