@@ -116,7 +116,7 @@
                 call(input) {
                     return tf.tidy(() => {
                         console.log(input)
-                        const input_shape = input.shape;
+                        const input_shape = input[0].shape;
                         console.log(input_shape)
                         const reduction_axes = tf.range(1,input_shape.length,1);
                         //const reduction_axes = tf.range(0,input_shape.length,1);//list(range(0, len(input_shape)))
