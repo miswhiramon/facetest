@@ -54,9 +54,7 @@
         
         </div>
 
-        <script type="module">
-            import {normalizeArray} from '@tensorflow/tfjs-layers/dist/utils/conv_utils';
-            import { InputSpec } from '@tensorflow/tfjs-layers/dist/engine/topology';
+        <script>
             var prediction
             var transImage
 
@@ -77,51 +75,76 @@
                 }
 
                 build(inputShape) {
-                    const ndim = inputShape[0];//[channelAxis];
+                    const ndim = inputShape.length;
+                    console.log(inputShape)
+                    console.log(ndim)
 
                     ndim = len(input_shape)
-                    this.input_spec = InputSpec({ndim:ndim})
-
-                    if (self.axis==null){
+                    this.input_spec = tf.input({shape:ndim})
+                    const shape;
+                    if (this.axis==null){
                         //shape = (1,)
+                        shape=tf.tensor([1])
                     }else{
-                        //shape = (inputShape[self.axis],)
+                        //shape = (inputShape[this.axis],)
+                        shape=tf.tensor([inputShape[this.axis]])
                     }
                     
-                    self.input_spec = InputSpec(ndim=ndim)
                     if (this.scale){
                         this.gamma = this.addWeight(shape=shape,
                                                     name='gamma',
-                                                    initializer=self.gamma_initializer,
-                                                    regularizer=self.gamma_regularizer,
-                                                    constraint=self.gamma_constraint)
+                                                    initializer=this.gamma_initializer,
+                                                    regularizer=this.gamma_regularizer,
+                                                    constraint=this.gamma_constraint)
                     }else{
-                        this.gamma=None;
+                        this.gamma=null;
                     }
                         
 
                     if (this.center){
                         this.beta = this.addWeight(shape=shape,
                                                     name='beta',
-                                                    initializer=self.beta_initializer,
-                                                    regularizer=self.beta_regularizer,
-                                                    constraint=self.beta_constraint)
+                                                    initializer=this.beta_initializer,
+                                                    regularizer=this.beta_regularizer,
+                                                    constraint=this.beta_constraint)
                     }else{
-                        this.beta = None
+                        this.beta = null;
                     }
                         
                     this.built = True
-
-                    this.x = this.addWeight('x', [], 'float32', tf.initializers.ones());
                 }
 
                 call(input) {
                     return tf.tidy(() => {
+                        const input_shape = input.shape;
+                        const reduction_axes = tf.range(1,input_shape.length,1);
+                        //const reduction_axes = tf.range(0,input_shape.length,1);//list(range(0, len(input_shape)))
 
+                        /*if (this.axis != null){
+                            del reduction_axes[this.axis]
+                        }*/
 
+                        //del reduction_axes[0]
 
-                    const k = tf.pow(this.x.read(), this.alpha);
-                    return tf.mul(input[0], k);
+                        mean = tf.mean(inputs, reduction_axes, keepDims=True)
+                        stddev = tf.moments(inputs, reduction_axes, keepDims=True).variance.sqrt() + this.epsilon
+                        normed = (inputs - mean) / stddev
+
+                        broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
+                        if (this.axis != null){
+                            broadcast_shape[this.axis] = input_shape[this.axis]
+                        }                            
+
+                        if (this.scale){
+                            broadcast_gamma = tf.reshape(this.gamma, broadcast_shape)
+                            normed = normed.mul(broadcast_gamma)
+                        }
+                            
+                        if (this.center){
+                            broadcast_beta = tf.reshape(this.beta, broadcast_shape)
+                            normed = normed.mul(broadcast_beta)
+                        }                            
+                        return normed
                     });
                 }
 
