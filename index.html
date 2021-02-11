@@ -122,15 +122,15 @@
                         var mean = tf.mean(input[0], reduction_axes,true)
                         var stddev = tf.moments(input[0], reduction_axes,true).variance.sqrt().add(this.epsilon)
                         var normed = ((input[0]).sub(mean)).div(stddev);
-                        console.log("mean,stddev,normed->")
+                        /*console.log("mean,stddev,normed->")
                         console.log(mean)
                         console.log(mean.shape)
                         console.log(stddev)
                         console.log(stddev.shape)
                         console.log(normed)
-                        console.log(normed.shape)
+                        console.log(normed.shape)*/
 
-                        var broadcast_shape = [];//tf.ones([input_shape.length]);//[1] * (input_shape.length)
+                        var broadcast_shape = [];//[1] * (input_shape.length)
                         for(var i=0;i<input_shape.length;i++){
                             broadcast_shape.push(1);
                         }
@@ -138,10 +138,10 @@
                         if (this.axis != null){
                             broadcast_shape[this.axis] = input_shape[this.axis]
                         }
-                        console.log(broadcast_shape)                      
+                        /*console.log(broadcast_shape)                      
                         console.log(broadcast_shape.shape)
                         console.log(this.gamma.read())
-                        console.log(this.gamma.read().shape)
+                        console.log(this.gamma.read().shape)*/
                         var broadcast_gamma;
                         var broadcast_beta;
                         if (this.scale){
