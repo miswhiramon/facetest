@@ -94,9 +94,10 @@
                     if (this.scale){
                         this.gamma = this.addWeight('gamma',shape,
                                                     'float32',
-                                                    tf.initializers.ones())/*,
-                                                    regularizer=this.gamma_regularizer,
-                                                    constraint=this.gamma_constraint)*/
+                                                    tf.initializers.ones(),
+                                                    this.gamma_regularizer,
+                                                    false,
+                                                    this.gamma_constraint)
                     }else{
                         this.gamma=null;
                     }
@@ -104,9 +105,10 @@
                     if (this.center){
                         this.beta = this.addWeight('beta',shape,
                                                     'float32',
-                                                    tf.initializers.zeros())/*,
-                                                    regularizer=this.beta_regularizer,
-                                                    constraint=this.beta_constraint)*/
+                                                    tf.initializers.zeros(),
+                                                    this.beta_regularizer,
+                                                    false,
+                                                    this.beta_constraint)
                     }else{
                         this.beta = null;
                     }
