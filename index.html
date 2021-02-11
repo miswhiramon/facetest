@@ -84,14 +84,14 @@
                     var shape;
                     if (this.axis==null){
                         //shape = (1,)
-                        shape=tf.tensor([1])
+                        shape=tf.tensor([4])
                     }else{
                         //shape = (inputShape[this.axis],)
                         shape=tf.tensor([inputShape[this.axis]])
                     }
                     
                     if (this.scale){
-                        this.gamma = this.addWeight('gamma',[1],
+                        this.gamma = this.addWeight('gamma',[4],
                                                     'float32',
                                                     tf.initializers.ones())/*,
                                                     regularizer=this.gamma_regularizer,
@@ -102,7 +102,7 @@
                         
 
                     if (this.center){
-                        this.beta = this.addWeight('beta',[1],
+                        this.beta = this.addWeight('beta',[4],
                                                     'float32',
                                                     tf.initializers.zeros())/*,
                                                     regularizer=this.beta_regularizer,
