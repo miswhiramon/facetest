@@ -115,7 +115,7 @@
 
                 call(input) {
                     return tf.tidy(() => {
-                        console.log(input)
+                        console.log(input[0])
                         const input_shape = input[0].shape;
                         console.log(input_shape)
                         const reduction_axes = tf.range(1,input_shape.length,1);
@@ -129,9 +129,9 @@
 
                         //del reduction_axes[0]
 
-                        var mean = tf.mean(input, reduction_axes,true)
-                        var stddev = tf.moments(input, reduction_axes,true).variance.sqrt() + this.epsilon
-                        var normed = (input - mean) / stddev
+                        var mean = tf.mean(input[0], reduction_axes,true)
+                        var stddev = tf.moments(input[0], reduction_axes,true).variance.sqrt() + this.epsilon
+                        var normed = (input[0] - mean) / stddev
 
                         broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
                         if (this.axis != null){
