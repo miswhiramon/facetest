@@ -135,10 +135,10 @@
                         if (this.axis != null){
                             broadcast_shape[this.axis] = input_shape[this.axis]
                         }
-                        //console.log(broadcast_shape)                      
-                        //console.log(broadcast_shape.shape)
-                        //console.log(this.gamma.read())
-                        //console.log(this.gamma.read().shape)
+                        console.log(broadcast_shape)                      
+                        console.log(broadcast_shape.shape)
+                        console.log(this.gamma.read())
+                        console.log(this.gamma.read().shape)
                         /*if (this.scale){
                             broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
                             normed = normed.mul(broadcast_gamma)
