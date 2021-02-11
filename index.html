@@ -75,7 +75,7 @@
                 }
 
                 build(inputShape) {
-                    const ndim = inputShape.length;
+                    /*const ndim = inputShape.length;
                     console.log(inputShape)
                     console.log(ndim)
 
@@ -92,9 +92,7 @@
                     if (this.scale){
                         this.gamma = this.addWeight('gamma',shape,
                                                     'float32',
-                                                    tf.initializers.ones())/*,
-                                                    regularizer=this.gamma_regularizer,
-                                                    constraint=this.gamma_constraint)*/
+                                                    tf.initializers.ones())
                     }else{
                         this.gamma=null;
                     }
@@ -103,14 +101,12 @@
                     if (this.center){
                         this.beta = this.addWeight('beta',shape,
                                                     'float32',
-                                                    tf.initializers.zeros())/*,
-                                                    regularizer=this.beta_regularizer,
-                                                    constraint=this.beta_constraint)*/
+                                                    tf.initializers.zeros())
                     }else{
                         this.beta = null;
                     }
                         
-                    this.built = true
+                    this.built = true*/
                 }
 
                 call(input) {
