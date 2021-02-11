@@ -138,8 +138,11 @@
                         var normed = (input[0] - mean) / stddev ;
                         console.log("mean,stddev,normed->")
                         console.log(mean)
+                        console.log(mean.shape)
                         console.log(stddev)
+                        console.log(stddev.shape)
                         console.log(normed)
+                        console.log(normed.shape)
 
                         var broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
                         
