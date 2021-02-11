@@ -155,6 +155,8 @@
                             broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
                             normed = normed.mul(broadcast_beta)
                         }*/
+                        console.log(normed)
+                        console.log(normed.length)
                         return normed
                     });
                 }
