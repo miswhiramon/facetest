@@ -66,8 +66,8 @@
                     this.epsilon=config.epsilon;
                     this.center=config.center;
                     this.scale=config.scale;
-                    this.beta_initializer='zeros';
-                    this.gamma_initializer='ones';
+                    this.beta_initializer=config.beta_initializer;//'zeros';
+                    this.gamma_initializer=config.gamma_initializer;//'ones';
                     this.beta_regularizer=config.beta_regularizer;
                     this.gamma_regularizer=config.gamma_regularizer;
                     this.beta_constraint=config.beta_constraint;
@@ -92,9 +92,9 @@
                     if (this.scale){
                         this.gamma = this.addWeight(shape=shape,
                                                     name='gamma',
-                                                    initializer=this.gamma_initializer,
+                                                    tf.initializers.constant({value:this.gamma_initializer}))/*,
                                                     regularizer=this.gamma_regularizer,
-                                                    constraint=this.gamma_constraint)
+                                                    constraint=this.gamma_constraint)*/
                     }else{
                         this.gamma=null;
                     }
@@ -103,9 +103,9 @@
                     if (this.center){
                         this.beta = this.addWeight(shape=shape,
                                                     name='beta',
-                                                    initializer=this.beta_initializer,
+                                                    tf.initializers.constant({value:this.beta_initializer}))/*,
                                                     regularizer=this.beta_regularizer,
-                                                    constraint=this.beta_constraint)
+                                                    constraint=this.beta_constraint)*/
                     }else{
                         this.beta = null;
                     }
