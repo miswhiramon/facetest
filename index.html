@@ -81,7 +81,7 @@
 
                     ndim = len(input_shape)
                     this.input_spec = tf.input({shape:ndim})
-                    const shape;
+                    var shape;
                     if (this.axis==null){
                         //shape = (1,)
                         shape=tf.tensor([1])
