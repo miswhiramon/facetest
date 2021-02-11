@@ -130,8 +130,11 @@
                         console.log(normed)
                         console.log(normed.shape)
 
-                        var broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
-                        
+                        var broadcast_shape = [];//tf.ones([input_shape.length]);//[1] * (input_shape.length)
+                        for(var i=0;i<input_shape.length;i++){
+                            broadcast_shape.push(1);
+                        }
+
                         if (this.axis != null){
                             broadcast_shape[this.axis] = input_shape[this.axis]
                         }
@@ -139,7 +142,7 @@
                         console.log(broadcast_shape.shape)
                         console.log(this.gamma.read())
                         console.log(this.gamma.read().shape)
-                        /*if (this.scale){
+                        if (this.scale){
                             broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
                             normed = normed.mul(broadcast_gamma)
                         }
@@ -147,7 +150,7 @@
                         if (this.center){
                             broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
                             normed = normed.mul(broadcast_beta)
-                        }*/
+                        }
                         return normed
                     });
                 }
