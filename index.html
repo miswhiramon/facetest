@@ -135,17 +135,21 @@
 
                         var mean = tf.mean(input[0], [-1],true)
                         var stddev = tf.moments(input[0], [-1],true).variance.sqrt() + this.epsilon
-                        var normed = (input[0] - mean) / stddev 
+                        var normed = (input[0] - mean) / stddev ;
+                        console.log("mean,stddev,normed->")
+                        console.log(mean)
+                        console.log(stddev)
+                        console.log(normed)
 
                         var broadcast_shape = tf.ones([input_shape.length]);//[1] * (input_shape.length)
                         
                         if (this.axis != null){
                             broadcast_shape[this.axis] = input_shape[this.axis]
                         }
-                        console.log(broadcast_shape)                      
-                        console.log(broadcast_shape.shape)
-                        console.log(this.gamma.read())
-                        console.log(this.gamma.read().shape)
+                        //console.log(broadcast_shape)                      
+                        //console.log(broadcast_shape.shape)
+                        //console.log(this.gamma.read())
+                        //console.log(this.gamma.read().shape)
                         /*if (this.scale){
                             broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
                             normed = normed.mul(broadcast_gamma)
