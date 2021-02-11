@@ -138,16 +138,18 @@
                         
                         if (this.axis != null){
                             broadcast_shape[this.axis] = input_shape[this.axis]
-                        }                            
+                        }
+                        console.log(broadcast_shape)                      
                         console.log(broadcast_shape.shape)
+                        console.log(this.gamma)
                         console.log(this.gamma.shape)
                         if (this.scale){
-                            broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
+                            broadcast_gamma = tf.reshape(this.gamma, broadcast_shape)
                             normed = normed.mul(broadcast_gamma)
                         }
                             
                         if (this.center){
-                            broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
+                            broadcast_beta = tf.reshape(this.beta, broadcast_shape)
                             normed = normed.mul(broadcast_beta)
                         }                            
                         return normed
