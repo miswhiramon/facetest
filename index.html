@@ -101,8 +101,8 @@
                         
 
                     if (this.center){
-                        this.beta = this.addWeight(shape=shape,
-                                                    name='beta',
+                        this.beta = this.addWeight('beta',[],
+                                                    'float32',
                                                     tf.initializers.zeros())/*,
                                                     regularizer=this.beta_regularizer,
                                                     constraint=this.beta_constraint)*/
