@@ -81,15 +81,13 @@
                     console.log(ndim)
 
                     //this.input_spec = tf.input({shape:ndim})
-                    /*var shape;
+                    var shape;
                     if (this.axis==null){
-                        //shape = (1,)
-                        shape=tf.tensor([4])
+                        shape = [1]
                     }else{
                         //shape = (inputShape[this.axis],)
                         shape=tf.tensor([inputShape[this.axis]])
-                    }*/
-                    const shape = [1];//[inputShape[inputShape.length - 1]];
+                    }
                     console.log("SHAPE:")
                     console.log(shape)
                     
