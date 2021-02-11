@@ -81,17 +81,18 @@
                     console.log(ndim)
 
                     this.input_spec = tf.input({shape:ndim})
-                    var shape;
+                    /*var shape;
                     if (this.axis==null){
                         //shape = (1,)
                         shape=tf.tensor([4])
                     }else{
                         //shape = (inputShape[this.axis],)
                         shape=tf.tensor([inputShape[this.axis]])
-                    }
+                    }*/
+                    const shape = [inputShape[inputShape.length - 1]];
                     
                     if (this.scale){
-                        this.gamma = this.addWeight('gamma',[4],
+                        this.gamma = this.addWeight('gamma',shape,
                                                     'float32',
                                                     tf.initializers.ones())/*,
                                                     regularizer=this.gamma_regularizer,
@@ -102,7 +103,7 @@
                         
 
                     if (this.center){
-                        this.beta = this.addWeight('beta',[4],
+                        this.beta = this.addWeight('beta',shape,
                                                     'float32',
                                                     tf.initializers.zeros())/*,
                                                     regularizer=this.beta_regularizer,
