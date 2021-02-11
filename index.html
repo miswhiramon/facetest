@@ -146,7 +146,7 @@
                         console.log(broadcast_shape.shape)
                         console.log(this.gamma.read())
                         console.log(this.gamma.read().shape)
-                        if (this.scale){
+                        /*if (this.scale){
                             broadcast_gamma = tf.reshape(this.gamma.read(), broadcast_shape)
                             normed = normed.mul(broadcast_gamma)
                         }
@@ -154,7 +154,7 @@
                         if (this.center){
                             broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
                             normed = normed.mul(broadcast_beta)
-                        }
+                        }*/
                         return normed
                     });
                 }
