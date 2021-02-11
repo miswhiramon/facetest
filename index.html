@@ -92,7 +92,7 @@
                     if (this.scale){
                         this.gamma = this.addWeight(shape=shape,
                                                     name='gamma',
-                                                    tf.initializers.constant({value:this.gamma_initializer}))/*,
+                                                    tf.initializers.ones())/*,
                                                     regularizer=this.gamma_regularizer,
                                                     constraint=this.gamma_constraint)*/
                     }else{
@@ -103,7 +103,7 @@
                     if (this.center){
                         this.beta = this.addWeight(shape=shape,
                                                     name='beta',
-                                                    tf.initializers.constant({value:this.beta_initializer}))/*,
+                                                    tf.initializers.zeros())/*,
                                                     regularizer=this.beta_regularizer,
                                                     constraint=this.beta_constraint)*/
                     }else{
