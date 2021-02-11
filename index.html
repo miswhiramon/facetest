@@ -62,6 +62,7 @@
                 static className = 'InstanceNormalization';
                 constructor(config) {
                     super(config);
+                    this.trainable;
                     this.axis=config.axis;
                     this.epsilon=config.epsilon;
                     this.center=config.center;
@@ -96,7 +97,7 @@
                                                     'float32',
                                                     tf.initializers.ones(),
                                                     this.gamma_regularizer,
-                                                    false,
+                                                    this.trainable,
                                                     this.gamma_constraint)
                     }else{
                         this.gamma=null;
@@ -107,7 +108,7 @@
                                                     'float32',
                                                     tf.initializers.zeros(),
                                                     this.beta_regularizer,
-                                                    false,
+                                                    this.trainable,
                                                     this.beta_constraint)
                     }else{
                         this.beta = null;
