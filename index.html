@@ -94,7 +94,7 @@
                     console.log(shape)
                     
                     if (this.scale){
-                        this.gamma = this.addWeight('gamma',shape,
+                        this.gamma = this.addWeight('gamma',[],
                                                     'float32',
                                                     tf.initializers.ones())/*,
                                                     regularizer=this.gamma_regularizer,
@@ -105,7 +105,7 @@
                         
 
                     if (this.center){
-                        this.beta = this.addWeight('beta',shape,
+                        this.beta = this.addWeight('beta',[],
                                                     'float32',
                                                     tf.initializers.zeros())/*,
                                                     regularizer=this.beta_regularizer,
