@@ -128,6 +128,8 @@ const fileup = (e) => {
         imgReader.onload = () => {
             const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
             const canvas = document.createElement('canvas');
+            canvas.style.position="absolute";
+            canvas.style.top="100px";
             const ctx = canvas.getContext('2d');
             canvas.width = imgReader.width;
             canvas.height = imgReader.height;
