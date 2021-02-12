@@ -215,7 +215,7 @@ function GetTensorFromCanvas(x,y,w,h) {
         var context = canvas.getContext('2d');
         //元イメージの座標(x, y)から幅w高さhの範囲を使用して、
         //座標(0, 0)の位置に、サイズ100×100でイメージを表示
-        context.drawImage(img, x, y, w, h, 25, 25, 100, 100);
+        context.drawImage(img, x, y, w, h, 0, 0, 100, 100);
     }
     tensor_image=preprocessImage(canvas);
     return tensor_image;
