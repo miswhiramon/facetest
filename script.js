@@ -131,7 +131,7 @@ const fileup = (e) => {
             const ctx = canvas.getContext('2d');
             canvas.width = imgReader.width;
             canvas.height = imgReader.height;
-            ctx.drawImage(imgReader,0,0,imgReader.width,imgReader.height);
+            ctx.drawImage(imgReader,0,20,imgReader.width,imgReader.height+20);
             console.log(imgReader.width)
             console.log(imgReader.height)
             img.src = canvas.toDataURL(imgType);
@@ -180,7 +180,7 @@ const app = async () => {
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
     //Load Model
-    model=await tf.loadLayersModel('tfmodel/model.json')
+    model = await tf.loadLayersModel('tfmodel/model.json')
     //Inference
     var prediction = await model.predict(tensor)
 
