@@ -131,7 +131,7 @@ const fileup = (e) => {
             const ctx = canvas.getContext('2d');
             canvas.width = imgReader.width;
             canvas.height = imgReader.height;
-            ctx.drawImage(imgReader,0,20,imgReader.width,imgReader.height+20);
+            ctx.drawImage(imgReader,0,70,imgReader.width,imgReader.height+70);
             console.log(imgReader.width)
             console.log(imgReader.height)
             img.src = canvas.toDataURL(imgType);
