@@ -129,7 +129,7 @@ const fileup = (e) => {
             const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
             const canvas = document.createElement('canvas');
             canvas.style.position="absolute";
-            canvas.style.top="100px";
+            canvas.style.top="300px";
             const ctx = canvas.getContext('2d');
             canvas.width = imgReader.width;
             canvas.height = imgReader.height;
