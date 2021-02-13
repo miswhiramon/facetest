@@ -204,17 +204,17 @@ const app = async () => {
     resultcanvas.height=128
     //var resultcanvas=document.getElementById('sample')
     tf.browser.toPixels(image,resultcanvas)
-    var canvas = document.createElement('canvas');
-    canvas.width=128;
-    canvas.height=128;
-    if (canvas.getContext) {
-        var context = canvas.getContext('2d');
+    var temp = document.createElement('canvas');
+    temp.width=128;
+    temp.height=128;
+    if (temp.getContext) {
+        var context = temp.getContext('2d');
         //元イメージの座標(x, y)から幅w高さhの範囲を使用して、
         //座標(0, 0)の位置に、サイズw×hでイメージを表示
         context.drawImage(resultcanvas, 0, 0, 128, 128);
     }
     var translated = document.getElementById("translated");
-    translated.src = resultcanvas.toDataURL(canvas);
+    translated.src = temp.toDataURL(temp);
     
     //var result = document.getElementById('img');
     //result.src = transImage
