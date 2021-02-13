@@ -199,13 +199,13 @@ const app = async () => {
     let offset_add = tf.scalar(1);
     prediction=prediction.add(offset_add).mul(offset_mul);
     var image = prediction.clipByValue(0,255).toInt();
-    var resultcanvas=document.createElement('canvas')
+    /*var resultcanvas=document.createElement('canvas')
     resultcanvas.width=128
-    resultcanvas.height=128
-    //var resultcanvas=document.getElementById('sample')
+    resultcanvas.height=128*/
+    var resultcanvas=document.getElementById('sample')
     tf.browser.toPixels(image,resultcanvas)
     var temp = document.createElement('canvas');
-    temp.width=128;
+    /*temp.width=128;
     temp.height=128;
     if (temp.getContext) {
         var context = temp.getContext('2d');
@@ -214,7 +214,7 @@ const app = async () => {
         context.drawImage(resultcanvas, 0, 0, 128, 128);
     }
     var translated = document.getElementById("translated");
-    translated.src = temp.toDataURL(temp);
+    translated.src = temp.toDataURL(temp);*/
     
     //var result = document.getElementById('img');
     //result.src = transImage
