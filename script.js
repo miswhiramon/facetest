@@ -156,7 +156,7 @@ const app = async () => {
     const displaySize = { width: img.width, height: img.height }
     // resize the overlay canvas to the input dimensions
     //const canvas = document.getElementById('overlay')
-    const canvas = document.createElement('overlay')
+    const canvas = document.createElement('canvas')
     faceapi.matchDimensions(canvas, displaySize)
 
     const startTime = Date.now(); // 開始時間
