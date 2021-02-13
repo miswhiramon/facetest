@@ -118,10 +118,11 @@ tf.serialization.registerClass(InstanceNormalization);
 //参考：https://tech-it.r-net.info/program/javascript/265/
 //
 // 画像の取得
+var img = document.getElementById('original');
 
 const fileup = (e) => {
     console.log(e)
-    var img = document.getElementById('original');
+    //var img = document.getElementById('original');
     const reader = new FileReader();
     const imgReader = new Image();
     reader.onloadend = () => {
