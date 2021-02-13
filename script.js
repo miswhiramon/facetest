@@ -218,7 +218,7 @@ const app = async () => {
 function GetTensorFromCanvas(x,y,w,h) {
     //描画コンテキストの取得
     //var canvas = document.getElementById('sample');
-    var canvas = document.createElement('sample');
+    var canvas = document.createElement('canvas');
     if (canvas.getContext) {
         var context = canvas.getContext('2d');
         //元イメージの座標(x, y)から幅w高さhの範囲を使用して、
