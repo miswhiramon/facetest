@@ -16,8 +16,8 @@ class InstanceNormalization extends tf.layers.Layer {
     }
 
     build(inputShape) {
-        const ndim = inputShape.length;
-        /*console.log("Build:inputShape/ndim:")
+        /*const ndim = inputShape.length;
+        console.log("Build:inputShape/ndim:")
         console.log(inputShape)
         console.log(ndim)*/
 
@@ -121,7 +121,7 @@ tf.serialization.registerClass(InstanceNormalization);
 
 const fileup = (e) => {
     console.log(e)
-    var img = document.getElementById('img');
+    var img = document.getElementById('original');
     const reader = new FileReader();
     const imgReader = new Image();
     reader.onloadend = () => {
@@ -133,10 +133,11 @@ const fileup = (e) => {
             const ctx = canvas.getContext('2d');
             canvas.width = imgReader.width;
             canvas.height = imgReader.height;
-            ctx.drawImage(imgReader,0,0,imgReader.width,imgReader.height+0);
+            ctx.drawImage(imgReader,0,0,imgReader.width,imgReader.height);
             console.log(imgReader.width)
             console.log(imgReader.height)
-            img.src = canvas.toDataURL(imgType);
+            //img.src = canvas.toDataURL(imgType);
+            img.src = canvas.toDataURL(canvas);
         }
         imgReader.src = reader.result;
     }
@@ -153,7 +154,8 @@ const app = async () => {
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
     const displaySize = { width: img.width, height: img.height }
     // resize the overlay canvas to the input dimensions
-    const canvas = document.getElementById('overlay')
+    //const canvas = document.getElementById('overlay')
+    const canvas = document.createElement('overlay')
     faceapi.matchDimensions(canvas, displaySize)
 
     const startTime = Date.now(); // 開始時間
@@ -212,13 +214,17 @@ const app = async () => {
 
 function GetTensorFromCanvas(x,y,w,h) {
     //描画コンテキストの取得
-    var canvas = document.getElementById('sample');
+    //var canvas = document.getElementById('sample');
+    var canvas = document.createElement('sample');
     if (canvas.getContext) {
         var context = canvas.getContext('2d');
         //元イメージの座標(x, y)から幅w高さhの範囲を使用して、
         //座標(0, 0)の位置に、サイズ100×100でイメージを表示
-        context.drawImage(img, x, y, w, h, 0, 0, 100, 100);
+        //context.drawImage(img, x, y, w, h, 0, 0, 100, 100);
+        context.drawImage(img, x, y, w, h);
     }
+    var faceImg=document.getElementById("face");
+    faceImg.src = canvas.toDataURL(canvas);
     tensor_image=preprocessImage(canvas);
     return tensor_image;
 }
