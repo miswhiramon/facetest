@@ -199,6 +199,8 @@ const app = async () => {
     prediction=prediction.add(offset_add).mul(offset_mul);
     var image = prediction.clipByValue(0,255).toInt();     
     var transImage = tf.browser.toPixels(image,canvas)
+    var translated = document.getElementById("translated");
+    translated.src = canvas.toDataURL(transImage);
     
     //var result = document.getElementById('img');
     //result.src = transImage
