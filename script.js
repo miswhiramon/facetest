@@ -180,7 +180,7 @@ const app = async () => {
     var x = parseInt(resizedDetections._box._x)
     var y = parseInt(resizedDetections._box._y)
     // draw detections into the canvas
-    faceapi.draw.drawDetections(canvas, resizedDetections)
+    //faceapi.draw.drawDetections(canvas, resizedDetections)
     
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
@@ -200,6 +200,7 @@ const app = async () => {
     prediction=prediction.add(offset_add).mul(offset_mul);
     var image = prediction.clipByValue(0,255).toInt();     
     var transImage = tf.browser.toPixels(image,canvas)
+    console.log(transImage);
     var translated = document.getElementById("translated");
     translated.src = canvas.toDataURL(canvas);
     
