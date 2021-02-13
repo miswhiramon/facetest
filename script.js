@@ -180,7 +180,7 @@ const app = async () => {
     var x = parseInt(resizedDetections._box._x)
     var y = parseInt(resizedDetections._box._y)
     // draw detections into the canvas
-    faceapi.draw.drawDetections(canvas, resizedDetections)
+    //faceapi.draw.drawDetections(canvas, resizedDetections)
     
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
