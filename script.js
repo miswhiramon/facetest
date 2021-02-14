@@ -200,11 +200,7 @@ const app = async () => {
     let offset_add = tf.scalar(1);
     prediction=prediction.add(offset_add).mul(offset_mul);
     var image = prediction.clipByValue(0,255).toInt();
-    /*var resultcanvas=document.createElement('canvas')
-    resultcanvas.width=128
-    resultcanvas.height=128*/
-    var resultcanvas=document.getElementById('sample')
-    tf.browser.toPixels(image,resultcanvas)
+
     var temp = document.createElement("canvas");
     console.log(temp);
     await tf.browser.toPixels(image,temp);
