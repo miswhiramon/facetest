@@ -147,7 +147,7 @@ const fileup = (e) => {
 const app = async () => {
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
-    //document.getElementById('isConvert').innerText='顔検出中';
+    document.getElementById('isConvert').innerText='顔の部分をさがしています。';
 
     // 顔検出の実行
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
@@ -175,10 +175,15 @@ const app = async () => {
     
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
+
+    document.getElementById('isConvert').innerText='変換中です。';
+
+
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
     //Inference
     var prediction = await model.predict(tensor)
+    document.getElementById('isConvert').innerText='もうすぐ完成！';
 
     console.log("Prediction,PredictionShape,Unstack(0)[0]=>")
     console.log(prediction)
@@ -195,6 +200,7 @@ const app = async () => {
     await tf.browser.toPixels(image,temp);
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
+    document.getElementById('isConvert').innerText='完成しました！';
 
     console.log("Prediction ended.")
 }
