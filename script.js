@@ -164,14 +164,14 @@ const app = async () => {
     
     /* Display detected face bounding boxes */
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
-    const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
+    const detections = await faceapi.detectSingleFace(imgReader, new faceapi.TinyFaceDetectorOptions())
     const endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     //document.getElementById('isConvert').innerText='顔検出完了';
 
     // resize the detected boxes in case your displayed image has a different size than the original
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    console.log(resizedDetections)
+    /*console.log(resizedDetections)
     console.log(parseInt(resizedDetections._box._height))
     console.log(parseInt(resizedDetections._box._width))
     console.log(parseInt(resizedDetections._box._x))
@@ -179,7 +179,12 @@ const app = async () => {
     var h = parseInt(resizedDetections._box._height)
     var w = parseInt(resizedDetections._box._width)
     var x = parseInt(resizedDetections._box._x)
-    var y = parseInt(resizedDetections._box._y)
+    var y = parseInt(resizedDetections._box._y)*/
+    var h = parseInt(detections._box._height)
+    var w = parseInt(detections._box._width)
+    var x = parseInt(detections._box._x)
+    var y = parseInt(detections._box._y)
+
     // draw detections into the canvas
     //faceapi.draw.drawDetections(canvas, resizedDetections)
     
