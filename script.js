@@ -206,6 +206,9 @@ const app = async () => {
     var resultcanvas=document.getElementById('sample')
     tf.browser.toPixels(image,resultcanvas)
     var temp = document.createElement('canvas');
+    tf.browser.toPixels(image,temp);
+    var png = temp.toDataURL();
+    document.getElementById('translated').src=png;
     /*temp.width=128;
     temp.height=128;
     if (temp.getContext) {
