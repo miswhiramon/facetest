@@ -145,7 +145,7 @@ const fileup = (e) => {
 }
 
 const app = async () => {
-    document.getElementById('isConvert').innerText='顔の部分をさがしています。';
+    document.getElementById('isConvert').innerText='変換中です。';
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
     
