@@ -205,7 +205,8 @@ const app = async () => {
     resultcanvas.height=128*/
     var resultcanvas=document.getElementById('sample')
     tf.browser.toPixels(image,resultcanvas)
-    var temp = document.createElement('canvas');
+    var temp = document.createElement("canvas");
+    console.log(temp);
     temp.width=128
     temp.height=128
     temp.style="background-color:yellow;";
