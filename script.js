@@ -163,7 +163,6 @@ const app = async () => {
     const detections = await faceapi.detectSingleFace(imgReader, new faceapi.TinyFaceDetectorOptions())
     const endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
-    //document.getElementById('isConvert').innerText='顔検出完了';
 
     var h = parseInt(detections._box._height)
     var w = parseInt(detections._box._width)
