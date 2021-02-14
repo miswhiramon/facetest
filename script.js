@@ -119,12 +119,13 @@ tf.serialization.registerClass(InstanceNormalization);
 //
 // 画像の取得
 var img = document.getElementById('original');
+var imgReader;
 
 const fileup = (e) => {
     console.log(e)
     //var img = document.getElementById('original');
     const reader = new FileReader();
-    const imgReader = new Image();
+    imgReader = new Image();
     reader.onloadend = () => {
         imgReader.onload = () => {
             const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
