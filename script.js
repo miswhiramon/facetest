@@ -207,9 +207,6 @@ const app = async () => {
     tf.browser.toPixels(image,resultcanvas)
     var temp = document.createElement("canvas");
     console.log(temp);
-    temp.width=128
-    temp.height=128
-    temp.style="background-color:yellow;";
     await tf.browser.toPixels(image,temp);
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
