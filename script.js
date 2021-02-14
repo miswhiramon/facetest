@@ -210,7 +210,7 @@ const app = async () => {
     temp.width=128
     temp.height=128
     temp.style="background-color:yellow;";
-    tf.browser.toPixels(image,temp);
+    await tf.browser.toPixels(image,temp);
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
     /*temp.width=128;
