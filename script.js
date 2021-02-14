@@ -194,7 +194,6 @@ const app = async () => {
     var image = prediction.clipByValue(0,255).toInt();
 
     var temp = document.createElement("canvas");
-    console.log(temp);
     await tf.browser.toPixels(image,temp);
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
