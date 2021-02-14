@@ -153,7 +153,6 @@ const app = async () => {
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
     const displaySize = { width: img.width, height: img.height }
     // resize the overlay canvas to the input dimensions
-    //const canvas = document.getElementById('overlay')
     const canvas = document.createElement('canvas')
     faceapi.matchDimensions(canvas, displaySize)
 
