@@ -136,7 +136,6 @@ const fileup = (e) => {
             ctx.drawImage(imgReader,0,0,imgReader.width,imgReader.height);
             console.log(imgReader.width)
             console.log(imgReader.height)
-            //img.src = canvas.toDataURL(imgType);
             img.src = canvas.toDataURL(canvas);
         }
         imgReader.src = reader.result;
