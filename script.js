@@ -204,10 +204,12 @@ const app = async () => {
     resultcanvas.width=128
     resultcanvas.height=128*/
     var resultcanvas=document.getElementById('sample')
-    //tf.browser.toPixels(image,resultcanvas)
+    tf.browser.toPixels(image,resultcanvas)
     var temp = document.createElement('canvas');
+    temp.width=128
+    temp.height=128
+    temp.style="background-color:yellow;";
     tf.browser.toPixels(image,temp);
-    resultcanvas=temp;
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
     /*temp.width=128;
