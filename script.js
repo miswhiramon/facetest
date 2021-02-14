@@ -210,26 +210,7 @@ const app = async () => {
     await tf.browser.toPixels(image,temp);
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
-    /*temp.width=128;
-    temp.height=128;
-    if (temp.getContext) {
-        var context = temp.getContext('2d');
-        //元イメージの座標(x, y)から幅w高さhの範囲を使用して、
-        //座標(0, 0)の位置に、サイズw×hでイメージを表示
-        context.drawImage(resultcanvas, 0, 0, 128, 128);
-    }
-    var translated = document.getElementById("translated");
-    translated.src = temp.toDataURL(temp);*/
-    
-    //var result = document.getElementById('img');
-    //result.src = transImage
-    
 
-    // 結果の出力
-    //console.log(detections);
-    //const trimimg=document.getElementById('sample')
-    //console.log(trimimg.width)
-    //console.log(trimimg.height)
     console.log("Prediction ended.")
 }
 
