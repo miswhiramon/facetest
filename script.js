@@ -220,7 +220,7 @@ function GetTensorFromCanvas(x,y,w,h) {
         var context = canvas.getContext('2d');
         //元イメージの座標(x, y)から幅w高さhの範囲を使用して、
         //座標(0, 0)の位置に、サイズw×hでイメージを表示
-        context.drawImage(img, x, y, w, h , 0, 0, w, h);
+        context.drawImage(imgReader, x, y, w, h , 0, 0, w, h);
     }
     var faceImg=document.getElementById("face");
     faceImg.src = canvas.toDataURL(canvas);
