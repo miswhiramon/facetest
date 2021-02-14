@@ -176,14 +176,13 @@ const app = async () => {
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
 
-    document.getElementById('isConvert').innerText='変換中です。';
+    document.getElementById('isConvert').innerText='変換中です。もうすぐ完成！';
 
 
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
     //Inference
     var prediction = await model.predict(tensor)
-    document.getElementById('isConvert').innerText='もうすぐ完成！';
 
     console.log("Prediction,PredictionShape,Unstack(0)[0]=>")
     console.log(prediction)
