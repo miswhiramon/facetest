@@ -236,9 +236,12 @@ const app = async () => {
 
     //var temp = document.createElement("canvas");
     console.log("D");
+    console.log(tf.memory())
     await tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
     image.dispose();
+    console.log(tf.memory())
     console.log("E");
+    console.log(tf.memory())
     var png = canvas.toDataURL();
     console.log("F");
     document.getElementById('translated').src=png;
