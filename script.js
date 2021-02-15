@@ -145,6 +145,7 @@ const fileup = (e) => {
             console.log(imgReader.width)
             console.log(imgReader.height)
             img.src = canvas.toDataURL(canvas);
+            progress_bar.setAttribute("style", "width:10%");
             progress_bar.style.width="width:10%";
         }
         imgReader.src = reader.result;
