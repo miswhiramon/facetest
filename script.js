@@ -211,6 +211,8 @@ const app = async () => {
     console.log("70%");
     //Inference
     
+    console.log(tf.memory())
+    console.log("InferenceStart")
     var prediction = await model.predict(tensor)
     document.getElementById('isConvert').innerText='90%';
     tensor.dispose();
