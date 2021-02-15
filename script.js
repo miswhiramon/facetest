@@ -224,8 +224,11 @@ const app = async () => {
     //prediction=prediction.unstack(0)[0]
     let offset_mul = tf.scalar(127.5);
     let offset_add = tf.scalar(1);
+    console.log("A");
     prediction=prediction.unstack(0)[0].add(offset_add).mul(offset_mul);
+    console.log("B");
     var image = prediction.clipByValue(0,255).toInt();
+    console.log("C");
 
     var temp = document.createElement("canvas");
     await tf.browser.toPixels(image,temp);
