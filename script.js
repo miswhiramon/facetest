@@ -214,10 +214,10 @@ const app = async () => {
     progress_bar.setAttribute("style", "width:90%");
     console.log("90%");
 
-    console.log("Prediction,PredictionShape,Unstack(0)[0]=>")
+    /*console.log("Prediction,PredictionShape,Unstack(0)[0]=>")
     console.log(prediction)
     console.log(prediction.shape)
-    console.log(prediction.unstack(0)[0])
+    console.log(prediction.unstack(0)[0])*/
 
     prediction=prediction.unstack(0)[0]
     let offset_mul = tf.scalar(127.5);
