@@ -206,6 +206,8 @@ const app = async () => {
     //Inference
     
     var prediction = await model.predict(tensor)
+    tensor.dispose();
+    model.dispose();
     progress_bar.setAttribute("style", "width:90%");
     console.log("90%");
 
