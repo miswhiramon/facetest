@@ -146,7 +146,6 @@ const fileup = (e) => {
             console.log(imgReader.height)
             img.src = canvas.toDataURL(canvas);
             progress_bar.setAttribute("style", "width:10%");
-            //progress_bar.style.width="width:10%";
         }
         imgReader.src = reader.result;
     }
@@ -158,7 +157,7 @@ const app = async () => {
     document.getElementById('isConvert').innerText='変換中です。';
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
-    progress_bar.style.width="width:30%";
+    progress_bar.setAttribute("style", "width:30%");
 
     // 顔検出の実行
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
@@ -174,7 +173,7 @@ const app = async () => {
     const detections = await faceapi.detectSingleFace(imgReader, new faceapi.TinyFaceDetectorOptions())
     const endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
-    progress_bar.style.width="width:50%";
+    progress_bar.setAttribute("style", "width:50%");
 
     var h = parseInt(detections._box._height)
     var w = parseInt(detections._box._width)
@@ -192,10 +191,10 @@ const app = async () => {
 
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
-    progress_bar.style.width="width:70%";
+    progress_bar.setAttribute("style", "width:70%");
     //Inference
     var prediction = await model.predict(tensor)
-    progress_bar.style.width="width:90%";
+    progress_bar.setAttribute("style", "width:90%");
 
     console.log("Prediction,PredictionShape,Unstack(0)[0]=>")
     console.log(prediction)
@@ -213,7 +212,7 @@ const app = async () => {
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
     document.getElementById('isConvert').innerText='完成しました！';
-    progress_bar.style.width="width:100%";
+    progress_bar.setAttribute("style", "width:100%");
 
     console.log("Prediction ended.")
 }
