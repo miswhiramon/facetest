@@ -233,9 +233,14 @@ const app = async () => {
     
 
     var temp = document.createElement("canvas");
+    console.log("D");
     await tf.browser.toPixels(image,temp);
+    image.dispose();
+    console.log("E");
     var png = temp.toDataURL();
+    console.log("F");
     document.getElementById('translated').src=png;
+    console.log("G");
     document.getElementById('isConvert').innerText='完成しました！';
     progress_bar.setAttribute("style", "width:100%");
 
