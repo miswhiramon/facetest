@@ -153,9 +153,9 @@ const fileup = (e) => {
 }
 
 const app = async () => {    
+    document.getElementById('isConvert').innerText='変換中です。';
     progress_bar.setAttribute("style", "width:10%");
     console.log("10%");
-    document.getElementById('isConvert').innerText='変換中です。';
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
     progress_bar.setAttribute("style", "width:30%");
