@@ -159,7 +159,7 @@ const app = async () => {
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
     console.log("30%");
-    progress_bar.setAttribute("style", "width:30%");
+    //progress_bar.setAttribute("style", "width:30%");
     
 
     // 顔検出の実行
