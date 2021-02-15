@@ -145,7 +145,6 @@ const fileup = (e) => {
             console.log(imgReader.width)
             console.log(imgReader.height)
             img.src = canvas.toDataURL(canvas);
-            progress_bar.setAttribute("style", "width:5%");
         }
         imgReader.src = reader.result;
     }
@@ -153,12 +152,12 @@ const fileup = (e) => {
     app()
 }
 
-const app = async () => {
-    document.getElementById('isConvert').innerText='変換中です。';
+const app = async () => {    
     progress_bar.setAttribute("style", "width:10%");
+    document.getElementById('isConvert').innerText='変換中です。';
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
-    progress_bar.setAttribute("style", "width:40%");
+    progress_bar.setAttribute("style", "width:30%");
 
     // 顔検出の実行
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
@@ -188,7 +187,8 @@ const app = async () => {
     var tensor = GetTensorFromCanvas(x,y,w,h)
 
     document.getElementById('isConvert').innerText='変換中です。もうすぐ完成！';
-
+    
+    progress_bar.setAttribute("style", "width:60%");
 
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
