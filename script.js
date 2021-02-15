@@ -127,6 +127,7 @@ tf.serialization.registerClass(InstanceNormalization);
 // 画像の取得
 var img = document.getElementById('original');
 var imgReader;
+var progress_bar = document.getElementById('progress_bar');
 
 const fileup = (e) => {
     console.log(e)
