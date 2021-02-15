@@ -236,7 +236,7 @@ const app = async () => {
 
     //var temp = document.createElement("canvas");
     console.log("D");
-    tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
+    await tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
     image.dispose();
     console.log("E");
     var png = canvas.toDataURL();
