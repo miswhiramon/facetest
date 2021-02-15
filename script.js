@@ -205,7 +205,9 @@ const app = async () => {
     progress_bar.setAttribute("style", "width:70%");
     console.log("70%");
     //Inference
+    tf.engine().startScope()
     var prediction = await model.predict(tensor)
+    tf.engine().endScope()
     progress_bar.setAttribute("style", "width:90%");
     console.log("90%");
 
