@@ -191,8 +191,10 @@ const app = async () => {
 
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
+    progress_bar.style.width="width:70%";
     //Inference
     var prediction = await model.predict(tensor)
+    progress_bar.style.width="width:90%";
 
     console.log("Prediction,PredictionShape,Unstack(0)[0]=>")
     console.log(prediction)
@@ -210,6 +212,7 @@ const app = async () => {
     var png = temp.toDataURL();
     document.getElementById('translated').src=png;
     document.getElementById('isConvert').innerText='完成しました！';
+    progress_bar.style.width="width:100%";
 
     console.log("Prediction ended.")
 }
