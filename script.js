@@ -183,8 +183,8 @@ const app = async () => {
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     progress_bar.setAttribute("style", "width:50%");
     console.log("50%");
-    faceapi.dispose();
-    detections.dispose();
+    //faceapi.dispose();
+    //detections.dispose();
 
     var h = parseInt(detections._box._height)
     var w = parseInt(detections._box._width)
