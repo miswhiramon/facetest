@@ -232,12 +232,12 @@ const app = async () => {
     console.log("C");
     
 
-    var temp = document.createElement("canvas");
+    //var temp = document.createElement("canvas");
     console.log("D");
-    await tf.browser.toPixels(image,temp);
+    await tf.browser.toPixels(image,canvas);
     image.dispose();
     console.log("E");
-    var png = temp.toDataURL();
+    var png = canvas.toDataURL();
     console.log("F");
     document.getElementById('translated').src=png;
     console.log("G");
