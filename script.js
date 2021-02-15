@@ -145,6 +145,7 @@ const fileup = (e) => {
             console.log(imgReader.width)
             console.log(imgReader.height)
             img.src = canvas.toDataURL(canvas);
+            //progress_bar.aria-valuenow=5;
         }
         imgReader.src = reader.result;
     }
