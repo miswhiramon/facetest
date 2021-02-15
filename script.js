@@ -147,6 +147,8 @@ const fileup = (e) => {
             img.src = canvas.toDataURL(canvas);
         }
         imgReader.src = reader.result;
+        progress_bar.setAttribute("style", "width:10%");
+        console.log("10%");
     }
     reader.readAsDataURL(e.files[0]);
     app()
@@ -154,12 +156,11 @@ const fileup = (e) => {
 
 const app = async () => {    
     document.getElementById('isConvert').innerText='変換中です。';
-    progress_bar.setAttribute("style", "width:10%");
-    console.log("10%");
+    
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
     console.log("30%");
-    //progress_bar.setAttribute("style", "width:30%");
+    progress_bar.setAttribute("style", "width:30%");
     
 
     // 顔検出の実行
