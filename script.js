@@ -196,16 +196,19 @@ const app = async () => {
     var tensor = GetTensorFromCanvas(x,y,w,h)
 
     document.getElementById('isConvert').innerText='変換中です。もうすぐ完成！';
+    document.getElementById('isConvert').innerText='60%';
     
     progress_bar.setAttribute("style", "width:60%");
     console.log("60%");
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
+    document.getElementById('isConvert').innerText='70%';
     progress_bar.setAttribute("style", "width:70%");
     console.log("70%");
     //Inference
     
     var prediction = await model.predict(tensor)
+    document.getElementById('isConvert').innerText='90%';
     tensor.dispose();
     model.dispose();
     progress_bar.setAttribute("style", "width:90%");
