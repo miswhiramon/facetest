@@ -129,6 +129,8 @@ var img = document.getElementById('original');
 var imgReader;
 var progress_bar = document.getElementById('progress_bar');
 
+var canvas = document.createElement('canvas');
+
 const fileup = (e) => {
     console.log(e)
     //var img = document.getElementById('original');
@@ -137,7 +139,7 @@ const fileup = (e) => {
     reader.onloadend = () => {
         imgReader.onload = () => {
             const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
-            const canvas = document.createElement('canvas');
+            //const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.width = imgReader.width;
             canvas.height = imgReader.height;
@@ -250,7 +252,6 @@ const app = async () => {
 function GetTensorFromCanvas(x,y,w,h) {
     //描画コンテキストの取得
     //var canvas = document.getElementById('sample');
-    var canvas = document.createElement('canvas');
     canvas.width=w;
     canvas.height=h;
     if (canvas.getContext) {
