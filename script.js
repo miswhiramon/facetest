@@ -131,7 +131,7 @@ var progress_bar = document.getElementById('progress_bar');
 
 var canvas = document.createElement('canvas');
 
-tf.setBackend('cpu');
+tf.setBackend('wasm');
 
 const fileup = (e) => {
     console.log(e)
