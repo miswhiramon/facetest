@@ -195,53 +195,7 @@ const app = async () => {
 
     // draw detections into the canvas
     //faceapi.draw.drawDetections(canvas, resizedDetections)
-    
-    tf.tidy(()=>{
-        //get tensor from canvas
-        var tensor = GetTensorFromCanvas(x,y,w,h)
 
-        document.getElementById('isConvert').innerText='変換中です。もうすぐ完成！';
-        //Load Model
-        model = await tf.loadLayersModel('tfmodel/model.json')
-        document.getElementById('isConvert').innerText='70%';
-        progress_bar.setAttribute("style", "width:70%");
-        console.log("70%");
-        //Inference
-        
-        console.log(tf.memory())
-        console.log("InferenceStart")
-        var prediction = await model.predict(tensor)
-        document.getElementById('isConvert').innerText='90%';
-        tensor.dispose();
-        model.dispose();
-        progress_bar.setAttribute("style", "width:90%");
-        console.log("90%");
-
-        /*console.log("Prediction,PredictionShape,Unstack(0)[0]=>")
-        console.log(prediction)
-        console.log(prediction.shape)
-        console.log(prediction.unstack(0)[0])*/
-
-        //prediction=prediction.unstack(0)[0]
-        const offset_mul = tf.scalar(127.5);
-        const offset_add = tf.scalar(1);
-        console.log("A");
-        prediction=prediction.unstack(0)[0].add(offset_add).mul(offset_mul);
-        offset_add.dispose();
-        offset_mul.dispose();
-        console.log("B");
-        var image = prediction.clipByValue(0,255).toInt();
-        prediction.dispose();
-        console.log("C");
-
-        
-
-        //var temp = document.createElement("canvas");
-        console.log("D");
-        console.log(tf.memory())
-        await tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
-    })
-    /*
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
 
@@ -281,7 +235,7 @@ const app = async () => {
     console.log("D");
     console.log(tf.memory())
     await tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
-    */
+    
     
     tf.dispose(image)
     image.dispose();
