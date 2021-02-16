@@ -164,7 +164,7 @@ const progress = async () =>{
 }
 
 const app = async () => {    
-    document.getElementById('isConvert').innerText='変換中です。';
+    document.getElementById('isConvert').innerText='顔部分検出中です。';
     
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
@@ -201,7 +201,7 @@ const app = async () => {
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
 
-    document.getElementById('isConvert').innerText='変換中です。もうすぐ完成！';
+    document.getElementById('isConvert').innerText='変換中です。もうしばらくお待ちください。';
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
     document.getElementById('isConvert').innerText='70%';
