@@ -187,9 +187,9 @@ const app = async () => {
         document.getElementById('isConvert').innerText='顔が検出できませんでした。';
         return
     }
-    progress_bar.setAttribute("style", "width:50%");
-    progress_bar.innerText="50%";
-    console.log("50%");
+    progress_bar.setAttribute("style", "width:40%");
+    progress_bar.innerText="40%";
+    console.log("40%");
     //faceapi.dispose();
     //detections.dispose();
 
@@ -210,10 +210,10 @@ const app = async () => {
     model = await tf.loadLayersModel('tfmodel/model.json')
     endTime = Date.now(); // 終了時間
     console.log("Model_DL_TIME:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
-    document.getElementById('isConvert').innerText='70%';
-    progress_bar.setAttribute("style", "width:70%");
-    progress_bar.innerText="70%";
-    console.log("70%");
+    document.getElementById('isConvert').innerText='75%';
+    progress_bar.setAttribute("style", "width:75%");
+    progress_bar.innerText="75%";
+    console.log("75%");
     //Inference
     
     console.log(tf.memory())
