@@ -178,12 +178,12 @@ const app = async () => {
     const canvas = document.createElement('canvas')
     faceapi.matchDimensions(canvas, displaySize)
 
-    const startTime = Date.now(); // 開始時間
+    var startTime = Date.now(); // 開始時間
     
     /* Display detected face bounding boxes */
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
     const detections = await faceapi.detectSingleFace(imgReader, new faceapi.TinyFaceDetectorOptions())
-    const endTime = Date.now(); // 終了時間
+    var endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     progress_bar.setAttribute("style", "width:50%");
     console.log("50%");
@@ -236,10 +236,12 @@ const app = async () => {
     //var temp = document.createElement("canvas");
     console.log("D");
     console.log(tf.memory())
+    startTime = Date.now(); // 開始時間
     tf.engine().startScope()
     await tf.browser.toPixels(image, canvas);
     tf.engine().endScope()
-
+    endTime = Date.now(); // 終了時間
+    console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     
     tf.dispose(image)
     image.dispose();
