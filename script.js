@@ -242,7 +242,10 @@ const app = async () => {
     //var temp = document.createElement("canvas");
     console.log("D");
     console.log(tf.memory())
-    await tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
+    tf.tidy(()=>{
+        tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
+    })
+    
     tf.dispose(image)
     image.dispose();
     console.log(tf.memory())
