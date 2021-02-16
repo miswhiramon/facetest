@@ -207,7 +207,7 @@ const app = async () => {
     document.getElementById('isConvert').innerText='変換中です。もうしばらくお待ちください。';
     //Load Model
     startTime = Date.now(); // 開始時間
-    model = await tf.loadLayersModel('tfmodel/model.json')
+    model = await tf.loadGraphModel('tfmodel/model.json')
     endTime = Date.now(); // 終了時間
     console.log("Model_DL_TIME:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
     document.getElementById('isConvert').innerText='75%';
