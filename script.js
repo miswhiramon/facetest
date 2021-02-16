@@ -242,13 +242,9 @@ const app = async () => {
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     
     tf.dispose(image)
-    image.dispose();
     console.log(tf.memory())
-    console.log("E");
     var png = canvas.toDataURL();
-    console.log("F");
     document.getElementById('translated').src=png;
-    console.log("G");
     document.getElementById('isConvert').innerText='完成しました！';
     progress_bar.setAttribute("style", "width:100%");
 
