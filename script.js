@@ -131,7 +131,7 @@ var progress_bar = document.getElementById('progress_bar');
 
 var canvas = document.createElement('canvas');
 
-await tf.setBackend('cpu');
+tf.setBackend('cpu');
 
 const fileup = (e) => {
     console.log(e)
