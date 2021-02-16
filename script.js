@@ -216,7 +216,8 @@ const app = async () => {
     endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     tf.dispose(tensor);
-    model.dispose();
+    tf.dispose(model);
+    document.getElementById('isConvert').innerText='変換完了';
     progress_bar.setAttribute("style", "width:90%");
     console.log("90%");
 
