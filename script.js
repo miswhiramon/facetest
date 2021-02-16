@@ -183,6 +183,10 @@ const app = async () => {
     const detections = await faceapi.detectSingleFace(imgReader, new faceapi.TinyFaceDetectorOptions())
     var endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
+    if(detections==null){
+        document.getElementById('isConvert').innerText='顔が検出できませんでした。';
+        return
+    }
     progress_bar.setAttribute("style", "width:50%");
     progress_bar.innerText="50%";
     console.log("50%");
