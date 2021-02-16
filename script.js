@@ -134,7 +134,7 @@ var canvas = document.createElement('canvas');
 tf.setBackend('webgl');
 
 const fileup = (e) => {
-    console.log(e)
+    progress_bar.setAttribute("style", "width:0%");
     //var img = document.getElementById('original');
     const reader = new FileReader();
     imgReader = new Image();
@@ -152,6 +152,7 @@ const fileup = (e) => {
         }
         imgReader.src = reader.result;
         progress_bar.setAttribute("style", "width:10%");
+        progress_bar.innerText="10%";
         console.log("10%");
     }
     reader.readAsDataURL(e.files[0]);
@@ -165,6 +166,7 @@ const app = async () => {
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
     progress_bar.setAttribute("style", "width:30%");
+    progress_bar.innerText="30%";
     
 
     // 顔検出の実行
@@ -182,6 +184,7 @@ const app = async () => {
     var endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     progress_bar.setAttribute("style", "width:50%");
+    progress_bar.innerText="50%";
     console.log("50%");
     //faceapi.dispose();
     //detections.dispose();
@@ -202,6 +205,7 @@ const app = async () => {
     model = await tf.loadLayersModel('tfmodel/model.json')
     document.getElementById('isConvert').innerText='70%';
     progress_bar.setAttribute("style", "width:70%");
+    progress_bar.innerText="70%";
     console.log("70%");
     //Inference
     
