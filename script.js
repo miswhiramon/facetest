@@ -211,7 +211,10 @@ const app = async () => {
     
     console.log(tf.memory())
     console.log("InferenceStart")
+    startTime = Date.now(); // 開始時間
     var prediction = await model.predict(tensor)
+    endTime = Date.now(); // 終了時間
+    console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     document.getElementById('isConvert').innerText='90%';
     tensor.dispose();
     model.dispose();
