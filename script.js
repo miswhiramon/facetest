@@ -158,17 +158,13 @@ const fileup = (e) => {
     app()
 }
 
-const progress = async () =>{
-    console.log("30%");
-    progress_bar.setAttribute("style", "width:30%");
-}
 
 const app = async () => {    
     document.getElementById('isConvert').innerText='顔部分検出中です。';
     
     // モデルの読み込み
     await faceapi.nets.tinyFaceDetector.load("models/");
-    progress();
+    progress_bar.setAttribute("style", "width:30%");
     
 
     // 顔検出の実行
