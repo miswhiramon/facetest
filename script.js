@@ -131,6 +131,8 @@ var progress_bar = document.getElementById('progress_bar');
 
 var canvas = document.createElement('canvas');
 
+await tf.setBackend('cpu');
+
 const fileup = (e) => {
     console.log(e)
     //var img = document.getElementById('original');
@@ -235,7 +237,7 @@ const app = async () => {
     console.log("D");
     console.log(tf.memory())
     await tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
-    
+
     
     tf.dispose(image)
     image.dispose();
