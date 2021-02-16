@@ -226,14 +226,21 @@ const app = async () => {
     console.log(prediction.unstack(0)[0])*/
 
     //prediction=prediction.unstack(0)[0]
-    let offset_mul = tf.scalar(127.5);
+    /*let offset_mul = tf.scalar(127.5);
     let offset_add = tf.scalar(1);
     console.log("A");
     prediction=prediction.unstack(0)[0].add(offset_add).mul(offset_mul);
     console.log("B");
     var image = prediction.clipByValue(0,255).toInt();
     prediction.dispose();
-    console.log("C");
+    console.log("C");*/
+
+    var image=tf.tidy(()=>{
+        const offset_mul = tf.scalar(127.5);
+        const offset_add = tf.scalar(1);
+        prediction=prediction.unstack(0)[0].add(offset_add).mul(offset_mul);
+        return prediction.clipByValue(0,255).toInt();
+    })
     
 
     //var temp = document.createElement("canvas");
