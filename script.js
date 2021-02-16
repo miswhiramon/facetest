@@ -247,7 +247,6 @@ const app = async () => {
     image.dispose();
     console.log(tf.memory())
     console.log("E");
-    console.log(tf.memory())
     var png = canvas.toDataURL();
     console.log("F");
     document.getElementById('translated').src=png;
