@@ -215,7 +215,6 @@ const app = async () => {
     var prediction = await model.predict(tensor)
     endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
-    document.getElementById('isConvert').innerText='90%';
     tf.dispose(tensor);
     model.dispose();
     progress_bar.setAttribute("style", "width:90%");
