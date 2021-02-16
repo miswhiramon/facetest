@@ -247,6 +247,7 @@ const app = async () => {
     document.getElementById('translated').src=png;
     document.getElementById('isConvert').innerText='完成しました！';
     progress_bar.setAttribute("style", "width:100%");
+    progress_bar.innerText="100%";
 
     console.log("Prediction ended.")
 }
