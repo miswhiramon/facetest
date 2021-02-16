@@ -230,7 +230,6 @@ const app = async () => {
     prediction.dispose();
 
     
-
     //var temp = document.createElement("canvas");
     console.log("D");
     console.log(tf.memory())
@@ -241,7 +240,7 @@ const app = async () => {
     endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     
-    tf.dispose(image)
+    image.dispose();
     console.log(tf.memory())
     var png = canvas.toDataURL();
     document.getElementById('translated').src=png;
