@@ -216,23 +216,18 @@ const app = async () => {
     endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     document.getElementById('isConvert').innerText='90%';
-    tensor.dispose();
+    tf.dispose(tensor);
     model.dispose();
     progress_bar.setAttribute("style", "width:90%");
     console.log("90%");
 
-
-    //prediction=prediction.unstack(0)[0]
     const offset_mul = tf.scalar(127.5);
     const offset_add = tf.scalar(1);
-    console.log("A");
     prediction=prediction.unstack(0)[0].add(offset_add).mul(offset_mul);
-    offset_add.dispose();
-    offset_mul.dispose();
-    console.log("B");
+    tf.dispose(offset_add);
+    tf.dispose(offset_mul);
     var image = prediction.clipByValue(0,255).toInt();
-    prediction.dispose();
-    console.log("C");
+    tf.dispose(prediction);
 
     
 
