@@ -182,7 +182,7 @@ const app = async () => {
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
     const detections = await faceapi.detectSingleFace(imgReader, new faceapi.TinyFaceDetectorOptions())
     var endTime = Date.now(); // 終了時間
-    console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
+    console.log("FaceDetectTime:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
     if(detections==null){
         document.getElementById('isConvert').innerText='顔が検出できませんでした。';
         return
@@ -221,7 +221,7 @@ const app = async () => {
     startTime = Date.now(); // 開始時間
     var prediction = await model.predict(tensor)
     endTime = Date.now(); // 終了時間
-    console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
+    console.log("PredictionTime:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
     tf.dispose(tensor);
     tf.dispose(model);
     document.getElementById('isConvert').innerText='変換完了';
