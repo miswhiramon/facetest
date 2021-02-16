@@ -224,10 +224,10 @@ const app = async () => {
     const offset_mul = tf.scalar(127.5);
     const offset_add = tf.scalar(1);
     prediction=prediction.unstack(0)[0].add(offset_add).mul(offset_mul);
-    tf.dispose(offset_add);
-    tf.dispose(offset_mul);
+    offset_add.dispose();
+    offset_mul.dispose();
     var image = prediction.clipByValue(0,255).toInt();
-    tf.dispose(prediction);
+    prediction.dispose();
 
     
 
