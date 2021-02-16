@@ -196,14 +196,13 @@ const app = async () => {
     // draw detections into the canvas
     //faceapi.draw.drawDetections(canvas, resizedDetections)
     
+    tf.tidy(()=>{
+
+    })
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
 
     document.getElementById('isConvert').innerText='変換中です。もうすぐ完成！';
-    document.getElementById('isConvert').innerText='60%';
-    
-    progress_bar.setAttribute("style", "width:60%");
-    console.log("60%");
     //Load Model
     model = await tf.loadLayersModel('tfmodel/model.json')
     document.getElementById('isConvert').innerText='70%';
@@ -242,9 +241,8 @@ const app = async () => {
     //var temp = document.createElement("canvas");
     console.log("D");
     console.log(tf.memory())
-    tf.tidy(()=>{
-        tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
-    })
+    await tf.browser.toPixels(image.resizeNearestNeighbor([128,128]), canvas);
+
     
     tf.dispose(image)
     image.dispose();
