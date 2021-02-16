@@ -231,9 +231,9 @@ const app = async () => {
     console.log("D");
     console.log(tf.memory())
     startTime = Date.now(); // 開始時間
-    tf.engine().startScope()
+    tf.engine().startScope();
     await tf.browser.toPixels(image, canvas);
-    tf.engine().endScope()
+    tf.engine().endScope();
     endTime = Date.now(); // 終了時間
     console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
     
