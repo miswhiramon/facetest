@@ -68,13 +68,13 @@ class InstanceNormalization extends tf.layers.Layer {
             var mean = tf.mean(input[0], -1,true)
             var stddev = tf.moments(input[0], -1,true).variance.sqrt().add(this.epsilon)
             var normed = ((input[0]).sub(mean)).div(stddev);
-            /*console.log("mean,stddev,normed->")
+            console.log("mean,stddev,normed->")
             console.log(mean)
             console.log(mean.shape)
             console.log(stddev)
             console.log(stddev.shape)
             console.log(normed)
-            console.log(normed.shape)*/
+            console.log(normed.shape)
 
             var broadcast_shape = [];//[1] * (input_shape.length)
             for(var i=0;i<input_shape.length;i++){
