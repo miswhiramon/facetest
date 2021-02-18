@@ -229,7 +229,7 @@ const app = async () => {
     console.log("90%");
 
     const offset_mul = tf.scalar(127.5);
-    const offset_add = tf.scalar(1);
+    const offset_add = tf.scalar(1.0);
     prediction=prediction.unstack(0)[0].add(offset_add).mul(offset_mul);
     offset_add.dispose();
     offset_mul.dispose();
