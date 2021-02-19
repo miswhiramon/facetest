@@ -64,6 +64,7 @@ class InstanceNormalization extends tf.layers.Layer {
         return tf.tidy(() => {
             const input_shape = input[0].shape;
             console.log("InputShape:"+input_shape)
+            console.log("InputShapeLength:"+input_shape.length)
             const reduction_axes = input_shape.length-1;
 
             var mean = tf.mean(input[0], reduction_axes,true)
