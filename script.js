@@ -243,11 +243,12 @@ const app = async () => {
     console.log(tf.memory())
     startTime = Date.now(); // 開始時間
     await tf.browser.toPixels(image, canvas);
-    tf.engine().endScope();
+    image.dispose();
+    tf.engine().endScope();    
     endTime = Date.now(); // 終了時間
     console.log("TensorToCanvasTime:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
     
-    image.dispose();
+    
     console.log(tf.memory())
     var png = canvas.toDataURL();
     document.getElementById('translated').src=png;
