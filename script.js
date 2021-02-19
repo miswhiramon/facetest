@@ -271,7 +271,7 @@ function GetTensorFromCanvas(x,y,w,h) {
     }
     var faceImg=document.getElementById("face");
     faceImg.src = canvas.toDataURL(canvas);
-    tensor_image=preprocessImage(canvas);
+    tensor_image=preprocessImage(canvas); 
     return tensor_image;
 }
 
