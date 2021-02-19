@@ -36,7 +36,7 @@ class InstanceNormalization extends tf.layers.Layer {
         }
         /*console.log("SHAPE:")
         console.log(shape)*/
-        /*
+        
         if (this.scale){
             this.gamma = this.addWeight('gamma',shape,
                                         'float32',
@@ -57,7 +57,7 @@ class InstanceNormalization extends tf.layers.Layer {
                                         this.beta_constraint)
         }else{
             this.beta = null;
-        }*/
+        }
     }
 
     call(input) {
