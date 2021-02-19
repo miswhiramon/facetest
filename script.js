@@ -78,7 +78,7 @@ class InstanceNormalization extends tf.layers.Layer {
             console.log(normed)
             console.log(normed.shape)
 
-            /*var broadcast_shape = [];//[1] * (input_shape.length)
+            var broadcast_shape = [];//[1] * (input_shape.length)
             for(var i=0;i<input_shape.length;i++){
                 broadcast_shape.push(1);
             }
@@ -97,7 +97,7 @@ class InstanceNormalization extends tf.layers.Layer {
             if (this.center){
                 broadcast_beta = tf.reshape(this.beta.read(), broadcast_shape)
                 normed = normed.add(broadcast_beta)
-            }*/
+            }
             return normed
         });
     }
