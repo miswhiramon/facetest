@@ -86,10 +86,7 @@ class InstanceNormalization extends tf.layers.Layer {
             if (this.axis != null){
                 broadcast_shape[this.axis] = input_shape[this.axis]
             }
-            /*console.log(broadcast_shape)                      
-            console.log(broadcast_shape.shape)
-            console.log(this.gamma.read())
-            console.log(this.gamma.read().shape)*/
+            
             var broadcast_gamma;
             var broadcast_beta;
             if (this.scale){
