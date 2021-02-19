@@ -204,6 +204,8 @@ const app = async () => {
     // draw detections into the canvas
     //faceapi.draw.drawDetections(canvas, resizedDetections)
 
+    
+    tf.engine().startScope();
     //get tensor from canvas
     var tensor = GetTensorFromCanvas(x,y,w,h)
 
@@ -222,7 +224,6 @@ const app = async () => {
     console.log(tf.memory())
     console.log("InferenceStart")
     startTime = Date.now(); // 開始時間
-    tf.engine().startScope();
     var prediction = await model.predict(tensor)
     endTime = Date.now(); // 終了時間
     console.log("PredictionTime:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
