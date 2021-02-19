@@ -63,24 +63,24 @@ class InstanceNormalization extends tf.layers.Layer {
     call(input) {
         return tf.tidy(() => {
             const input_shape = input[0].shape;
-            console.log("InputShape:"+input_shape)
-            console.log("InputShapeLength:"+input_shape.length)
+            //console.log("InputShape:"+input_shape)
+            //console.log("InputShapeLength:"+input_shape.length)
             //const reduction_axes = input_shape.length-1;
 
             //var mean = tf.mean(input[0], 1,true);
             //mean = tf.mean(mean, 2,true);
             var mean = tf.mean(input[0], [1,2],true);
-            console.log("MEAN_SHAPE:"+mean.shape)
+            //console.log("MEAN_SHAPE:"+mean.shape)
             var stddev = tf.moments(input[0], [1,2],true).variance.sqrt().add(this.epsilon)
-            console.log("STDDEV_SHAPE:"+stddev.shape);
+            //console.log("STDDEV_SHAPE:"+stddev.shape);
             var normed = ((input[0]).sub(mean)).div(stddev);
-            console.log("mean,stddev,normed->")
+            /*console.log("mean,stddev,normed->")
             console.log(mean)
             console.log(mean.shape)
             console.log(stddev)
             console.log(stddev.shape)
             console.log(normed)
-            console.log(normed.shape)
+            console.log(normed.shape)*/
 
             var broadcast_shape = []; //[1] * (input_shape.length)
             for(var i=0;i<input_shape.length;i++){
