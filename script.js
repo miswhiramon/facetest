@@ -67,9 +67,9 @@ class InstanceNormalization extends tf.layers.Layer {
             console.log("InputShapeLength:"+input_shape.length)
             //const reduction_axes = input_shape.length-1;
 
-            //var mean = tf.mean(input[0], 1,true);
-            //mean = tf.mean(mean, 2,true);
-            var mean = input[0].mean(2,true).mean(1,true);
+            var mean = tf.mean(input[0], 1,true);
+            mean = tf.mean(mean, 2,true);
+            //var mean = input[0].mean(2,true).mean(1,true);
             //var stddev = tf.moments(input[0], reduction_axes,true).variance.sqrt().add(this.epsilon)
             var h_stddev = tf.moments(input[0], 1,true).variance;
             var w_stddev = tf.moments(input[0], 2,true).variance;
