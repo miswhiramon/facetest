@@ -278,8 +278,8 @@ function GetTensorFromCanvas(x,y,w,h) {
 
 function preprocessImage(image){
     //オフセット等を学習時と一致させる。
-    let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([128,128]).toFloat();
-    //let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([256,256]).toFloat();
+    //let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([128,128]).toFloat();
+    let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([256,256]).toFloat();
     let offset_div = tf.scalar(127.5);
     let offset_sub = tf.scalar(1.0);
     return tensor.div(offset_div).sub(offset_sub).expandDims();
