@@ -236,14 +236,12 @@ const app = async () => {
     offset_mul.dispose();
     var image = prediction.clipByValue(0,255).toInt();
     prediction.dispose();
-    tf.engine().endScope();
 
     
     //var temp = document.createElement("canvas");
     console.log("D");
     console.log(tf.memory())
     startTime = Date.now(); // 開始時間
-    tf.engine().startScope();
     await tf.browser.toPixels(image, canvas);
     tf.engine().endScope();
     endTime = Date.now(); // 終了時間
