@@ -218,7 +218,9 @@ const app = async () => {
     console.log(tf.memory())
     console.log("InferenceStart")
     startTime = Date.now(); // 開始時間
+    tf.engine().startScope();
     var prediction = await model.predict(tensor)
+    tf.engine().endScope();
     endTime = Date.now(); // 終了時間
     console.log("PredictionTime:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
     tf.dispose(tensor);
@@ -226,6 +228,7 @@ const app = async () => {
     document.getElementById('isConvert').innerText='変換完了';
     progress_bar.setAttribute("style", "width:90%");
     console.log("90%");
+    console.log(tf.memory())
 
     const offset_mul = tf.scalar(127.5);
     const offset_add = tf.scalar(1.0);
