@@ -220,7 +220,6 @@ const app = async () => {
     startTime = Date.now(); // 開始時間
     tf.engine().startScope();
     var prediction = await model.predict(tensor)
-    tf.engine().endScope();
     endTime = Date.now(); // 終了時間
     console.log("PredictionTime:"+(endTime - startTime)); // 何ミリ秒かかったかを表示する
     tf.dispose(tensor);
@@ -237,6 +236,7 @@ const app = async () => {
     offset_mul.dispose();
     var image = prediction.clipByValue(0,255).toInt();
     prediction.dispose();
+    tf.engine().endScope();
 
     
     //var temp = document.createElement("canvas");
