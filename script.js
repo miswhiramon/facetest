@@ -1,8 +1,8 @@
 /*!
  * script.js v1.0
  *
- * Copyright © 2021 yuichiro hiramoto All Rights Reserved.
- * Copyright © 2021-2021 yuichiro hiramoto All Rights Reserved.
+ * Copyright © 2021 Nd All Rights Reserved.
+ * Copyright © 2021-2021 Nd All Rights Reserved.
  */
 
 class InstanceNormalization extends tf.layers.Layer {
