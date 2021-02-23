@@ -137,8 +137,10 @@ var canvas = document.createElement('canvas');
 tf.setBackend('webgl');
 
 const fileup = (e) => {
+    progress_bar= document.getElementById('progress_bar');
     progress_bar.setAttribute("style", "width:0%");
-    //var img = document.getElementById('original');
+    img = document.getElementById('original');
+    canvas = document.createElement('canvas');
     const reader = new FileReader();
     imgReader = new Image();
     reader.onloadend = () => {
