@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>BeGyaru 誰でも簡単にギャルなれるサイト</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,54 +11,52 @@
         <meta property="og:url" content="">
         <meta property="og:image" content="">
 
-        <link rel="apple-touch-icon" href="icon.png">
+        <!--<link rel="apple-touch-icon" href="icon.png">-->
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
         <meta name="theme-color" content="#fafafa">
 
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
 
-        <script src="jsLoadImage/load-image.all.min.js"></script>
-
         <style>
-            canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
+          canvas {
+              position: absolute;
+              top: 0;
+              left: 0;
+          }
+
         </style>
+        
     </head>
 
     <body>
         <!-- face-api.js -->
-        <script src="js/face-api.min.js"></script>
+        <script src="/static/js/face-api.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/static/script.js"></script>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="howtoplay.html">BeGyaru</a>
+          <a class="navbar-brand">BeGyaru 顔変換アプリ</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
-          
-        
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">ホーム <span class="sr-only">(current)</span></a>
-              </li>
-
-              
+                <a class="nav-link" href="https://begyaru.com">ホーム <span class="sr-only">(current)</span></a>
+              </li>              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   ヘルプ
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="howtoplay.html">遊び方</a>
-                  <a class="dropdown-item" href="service.html">利用規約</a>
-                  <!--<div class="dropdown-divider"></div>-->
-                  
+                  <a class="dropdown-item" href="https://begyaru.com/service">利用規約</a>
+                  <!--<div class="dropdown-divider"></div>-->                  
                 </div>
               </li>
             </ul>
@@ -68,86 +66,108 @@
         <div class="card mt-2 mb-1 ml-2 mr-2">
           <div class="card-body">
             <h5 class="card-title">ようこそBeGyaruへ！</h5>
-              BeGyaruではメイクをせずともあなたが黒ギャルになった姿を見ることができます。
+              BeGyaruではメイクをせずともあなたがガングロギャルになった姿を見ることができます。
               画像をアップロードして遊んでみましょう！
           </div>
         </div>
 
-        <div id="isConvert" class="alert alert-primary ml-2 mr-2" role="alert">
-          ↓ 顔画像をアップロードしてください。
-        </div> 
-      
-        <div class="ml-5 mr-5">
-          ファイル：<input type="file" accept="image/jpeg,image/png,image/gif" onchange="fileup(this)" />
+        
+        <div id="isConvert" class="alert alert-primary ml-3 mr-3 mt-2" role="alert">
+          写真はローカルで処理されます。
         </div>
         
+
+        <div class="d-flex flex-row ml-3 mr-3">
+          <!--カメラボタン-->
+          <button type="button" class="btn btn-primary mb-2 mr-3 btn-lg" onclick="startCamera()">
+            <div class="d-flex align-items-center">
+              <div class="ml-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                  <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"></path>
+                  <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"></path>
+                </svg> 
+              </div>
+              <div class="ml-3 mr-1">
+                カメラ
+              </div>
+            </div>
+          </button>
+          <!--ギャラリーボタン-->
+          <label for="inputGroupFile01">
+            <div class="mt-1 mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+                <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
+              </svg>
+              ギャラリー
+            </div>
+          </label>
+          <input type="file" accept="image/jpeg,image/png,image/gif" id="inputGroupFile01" onchange="fileup(this)" hidden>
+        </div>
         
-        <div class="progress mt-2 mb-2 ml-5 mr-5">
-            <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress mt-2 mb-2 ml-3 mr-3">
+          <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
-        <div id="images">
-            <!-- テストに使用する画像 -->
-            <!--<img id="img" src="face.jpg"></img>-->
-            <canvas id="overlay" width="0" height="0"></canvas>
+        <!--カメラフィールド-->
+        <div id="camera_field">
+          <div id="camera"></div>
+          <div id="camera_button" class="d-flex justify-content-center"></div>
         </div>
 
         <div class="container mb-2">
-            <div class="row">
-                
-                <div class="col-md-4">
-                    <div class="mt-1 card">
-                        <div class="card-body">
-                            <!--<h5 class="card-title">オリジナル画像</h5>-->
-                            <div class="alert alert-success" role="alert">
-                                オリジナル画像
-                            </div>
-                            <div class="mb-1" id="text1">正面を向いている一人分の画像をアップロードしてください。</div>
-                            <img id="original" src="original.png" class="rounded img-fluid"></img>
-                        </div>
-                    </div>
-                </div>
-                
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="mt-1 card">
+                      <div class="card-body">
+                          <!--<h5 class="card-title">オリジナル画像</h5>-->
+                          <div class="alert alert-success" role="alert">
+                              オリジナル画像
+                          </div>
+                          <!--<div class="mb-1" id="text1">正面を向いている一人分の画像を選択してください。</div>-->
+                          <img id="original" src="static/original.png" class="rounded img-fluid"></img>
+                      </div>
+                  </div>
+              </div>
 
-                <div class="col-md-4">
-                    <div class="mt-1 card">
-                        <div class="card-body">
-                            <div class="alert alert-success" role="alert">
-                                顔部分画像
-                            </div>
-                            <div class="mb-4" id="text2">顔部分が切り取られます。</div>
-                            <img id="face" src="trim.png" class="rounded img-fluid"></img>
-                        </div>
-                    </div>
-                </div>
+              <div class="col-md-4">
+                  <div class="mt-1 card">
+                      <div class="card-body">
+                          <div class="alert alert-success" role="alert">
+                              顔部分画像
+                          </div>
+                          <!--<div class="mb-4" id="text2">顔部分が切り取られます。</div>-->
+                          <img id="face" src="static/trim.png" class="rounded img-fluid"></img>
+                      </div>
+                  </div>
+              </div>
 
-                <div class="col-md-4">
-                    <div class="mt-1 card">
-                        <div class="card-body">
-                            <div class="alert alert-success" role="alert">
-                                変換後画像
-                            </div>
-                            <div class="mb-4" id="text2">ギャルになった姿がここに表示されます。</div>
-                            <img id="translated" src="gyaru.png" class="rounded img-fluid"></img>
-                        </div>
-                    </div>                    
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="card mt-3 mb-3 ml-5 mr-5">
-          <div class="card-body">
-            <h5 class="card-title">個人情報について</h4>
-              本サイトでは画像処理を各ユーザーの端末上で行います。ユーザーがアップロードした画像がサーバーに送られることはありません。
-
+              <div class="col-md-4">
+                  <div class="mt-1 card">
+                      <div class="card-body">
+                          <div class="alert alert-success" role="alert">
+                              変換後画像
+                          </div>
+                          <!--<div class="mb-4" id="text2">ギャル変換後</div>-->
+                          <img id="translated" src="static/gyaru.png" class="rounded img-fluid"></img>
+                          <button type="button" class="btn btn-primary mt-1" onclick="downloadCanvas()">ダウンロード</button>
+                      </div>
+                  </div>                    
+              </div>
           </div>
-        </div>
+      </div>
 
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+      <div class="container mt-3">
+        シェア
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    
+      <footer>
+        <p class="text-center">
+        <span class="text-muted">
+          © 2021 Nd
+        </span>
+        </p>
+      </footer>
     </body>
 </html>
