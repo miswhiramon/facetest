@@ -237,7 +237,7 @@ const app = async () => {
     document.getElementById('isConvert').innerText='顔部分検出中です。';
     
     // モデルの読み込み
-    await faceapi.nets.tinyFaceDetector.load("models/");
+    await faceapi.nets.tinyFaceDetector.load("/models/");
     progress_bar.setAttribute("style", "width:30%");
     progress_bar.innerText="30%";
     
