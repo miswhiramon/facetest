@@ -15,7 +15,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="theme-color" content="#fafafa">
 
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
@@ -33,12 +33,12 @@
 
     <body>
         <!-- face-api.js -->
-        <script src="/static/js/face-api.min.js"></script>
+        <script src="/js/face-api.min.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        <script src="/static/script.js"></script>
+        <script src="script.js"></script>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand">BeGyaru 顔変換アプリ</a>
@@ -125,7 +125,7 @@
                               オリジナル画像
                           </div>
                           <!--<div class="mb-1" id="text1">正面を向いている一人分の画像を選択してください。</div>-->
-                          <img id="original" src="static/original.png" class="rounded img-fluid"></img>
+                          <img id="original" src="original.png" class="rounded img-fluid"></img>
                       </div>
                   </div>
               </div>
@@ -137,7 +137,7 @@
                               顔部分画像
                           </div>
                           <!--<div class="mb-4" id="text2">顔部分が切り取られます。</div>-->
-                          <img id="face" src="static/trim.png" class="rounded img-fluid"></img>
+                          <img id="face" src="trim.png" class="rounded img-fluid"></img>
                       </div>
                   </div>
               </div>
@@ -149,7 +149,7 @@
                               変換後画像
                           </div>
                           <!--<div class="mb-4" id="text2">ギャル変換後</div>-->
-                          <img id="translated" src="static/gyaru.png" class="rounded img-fluid"></img>
+                          <img id="translated" src="gyaru.png" class="rounded img-fluid"></img>
                           <button type="button" class="btn btn-primary mt-1" onclick="downloadCanvas()">ダウンロード</button>
                       </div>
                   </div>                    

@@ -6,9 +6,10 @@
  */
 
 class InstanceNormalization extends tf.layers.Layer {
-    static className = 'InstanceNormalization';
+    //static className='InstanceNormalization';
     constructor(config) {
         super(config);
+        this.className='InstanceNormalization';
         this.trainable;
         this.axis=config.axis;
         this.epsilon=config.epsilon;
@@ -23,19 +24,12 @@ class InstanceNormalization extends tf.layers.Layer {
     }
 
     build(inputShape) {
-        /*const ndim = inputShape.length;
-        console.log("Build:inputShape/ndim:")
-        console.log(inputShape)
-        console.log(ndim)*/
-
         var shape;
         if (this.axis==null){
             shape = [1]
         }else{
             shape=tf.tensor([inputShape[this.axis]])
         }
-        /*console.log("SHAPE:")
-        console.log(shape)*/
         
         if (this.scale){
             this.gamma = this.addWeight('gamma',shape,
@@ -63,24 +57,10 @@ class InstanceNormalization extends tf.layers.Layer {
     call(input) {
         return tf.tidy(() => {
             const input_shape = input[0].shape;
-            //console.log("InputShape:"+input_shape)
-            //console.log("InputShapeLength:"+input_shape.length)
-            //const reduction_axes = input_shape.length-1;
-
-            //var mean = tf.mean(input[0], 1,true);
-            //mean = tf.mean(mean, 2,true);
             var mean = tf.mean(input[0], [1,2],true);
-            //console.log("MEAN_SHAPE:"+mean.shape)
             var stddev = tf.moments(input[0], [1,2],true).variance.sqrt().add(this.epsilon)
-            //console.log("STDDEV_SHAPE:"+stddev.shape);
             var normed = ((input[0]).sub(mean)).div(stddev);
-            /*console.log("mean,stddev,normed->")
-            console.log(mean)
-            console.log(mean.shape)
-            console.log(stddev)
-            console.log(stddev.shape)
-            console.log(normed)
-            console.log(normed.shape)*/
+
 
             var broadcast_shape = []; //[1] * (input_shape.length)
             for(var i=0;i<input_shape.length;i++){
@@ -125,17 +105,32 @@ class InstanceNormalization extends tf.layers.Layer {
  */
 tf.serialization.registerClass(InstanceNormalization);
 
-//参考：https://tech-it.r-net.info/program/javascript/265/
-//
+
+//tensorflow jsの実行環境の判定
+var ut = navigator.userAgent;
+console.log(ut);
+if(ut.indexOf('iPhone') > 0 || ut.indexOf('iPod') > 0 || ut.indexOf('iPad') > 0 ){
+    console.log('iPhone iPod iPad');
+    tf.setBackend('cpu');
+    console.log(tf.getBackend());
+}else{
+    console.log('Windows Mac Android');
+    tf.setBackend('webgl');
+    console.log(tf.getBackend());
+}
+
+
 // 画像の取得
 var img = document.getElementById('original');
 var imgReader;
-var progress_bar = document.getElementById('progress_bar');
+var progress_bar= document.getElementById('progress_bar'); 
+
+//ボタンの取得
+var download_button=document.getElementById('download');
 
 var canvas = document.createElement('canvas');
 
-tf.setBackend('webgl');
-
+//ギャラリーアクセス
 const fileup = (e) => {
     progress_bar= document.getElementById('progress_bar');
     progress_bar.setAttribute("style", "width:0%");
@@ -145,8 +140,6 @@ const fileup = (e) => {
     imgReader = new Image();
     reader.onloadend = () => {
         imgReader.onload = () => {
-            const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
-            //const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.width = imgReader.width;
             canvas.height = imgReader.height;
@@ -156,15 +149,90 @@ const fileup = (e) => {
             img.src = canvas.toDataURL(canvas);
         }
         imgReader.src = reader.result;
+        console.log(imgReader);
         progress_bar.setAttribute("style", "width:10%");
         progress_bar.innerText="10%";
         console.log("10%");
+        app()
     }
     reader.readAsDataURL(e.files[0]);
-    app()
+    
 }
 
+//カメラアクセス
+//Camera
+function startCamera(){
+    const div1 = document.getElementById("camera");
+    const camera_button = document.getElementById('camera_button');
+    // 要素の追加
+    if (!div1.hasChildNodes()){
+        const p1 = document.createElement("video");
+        p1.setAttribute("id","myVideo");
+        p1.setAttribute("autoplay","1");
 
+        var constraints = { audio: false, video: { facingMode: "user" } };
+
+        navigator.mediaDevices.getUserMedia( constraints )
+        .then(
+        function( stream ) {
+          div1.appendChild(p1);
+          var video = document.querySelector( 'video' );
+          video.srcObject = stream;
+          video.onloadedmetadata = function( e ) {
+          video.play();
+
+          const button_field=document.getElementById('camera_button');
+          button_field.style.width=video.clientWidth+"px";
+          console.log(button_field);
+          };
+
+          if (!camera_button.hasChildNodes()){
+            camera_button.innerHTML="<div class='photo-button' onclick='stopCamera()'><div class='circle'></div><div class='ring'></div></div>"
+          }
+        })
+    }
+}
+
+function stopCamera(){
+    //進捗ゲージ初期化
+    progress_bar= document.getElementById('progress_bar');
+    progress_bar.setAttribute("style", "width:0%");
+    //要素取得
+    const div1 = document.getElementById("camera");
+    const camera_button = document.getElementById('camera_button');
+    img = document.getElementById('original');
+    //imgReader = new Image();
+    if (div1.hasChildNodes()){
+        //get video Element
+        const video=document.getElementById('myVideo');
+        //create temp canvas
+        const temp_canvas=document.createElement("canvas");
+        const ctx=temp_canvas.getContext("2d");
+        //canvas resize
+        temp_canvas.width=video.videoWidth;
+        temp_canvas.height=video.videoHeight;
+        //draw videoImage to Canvas
+        ctx.drawImage(video,0,0,video.videoWidth,video.videoHeight);
+        //img draw
+        img.src=temp_canvas.toDataURL();
+        imgReader=img;
+        console.log(imgReader);
+
+        //カメラの終了
+        const tracks = document.getElementById('myVideo').srcObject.getTracks();        
+        tracks.forEach(track => {
+            track.stop();//カメラの停止
+        });
+        document.getElementById('myVideo').srcObject = null;
+        div1.removeChild(div1.firstChild);
+        app()
+    }
+    if (camera_button.hasChildNodes()){
+        camera_button.removeChild(camera_button.firstChild);
+    }
+}
+
+//顔検出・変換処理
 const app = async () => {    
     document.getElementById('isConvert').innerText='顔部分検出中です。';
     
@@ -176,10 +244,10 @@ const app = async () => {
 
     // 顔検出の実行
     //const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
-    const displaySize = { width: img.width, height: img.height }
+    //const displaySize = { width: img.width, height: img.height }
     // resize the overlay canvas to the input dimensions
-    const canvas = document.createElement('canvas')
-    faceapi.matchDimensions(canvas, displaySize)
+    //const canvas = document.createElement('canvas')
+    //faceapi.matchDimensions(canvas, displaySize)
 
     var startTime = Date.now(); // 開始時間
     
@@ -194,14 +262,16 @@ const app = async () => {
     }
     progress_bar.setAttribute("style", "width:40%");
     progress_bar.innerText="40%";
-    console.log("40%");
-    //faceapi.dispose();
-    //detections.dispose();
 
     var h = parseInt(detections._box._height)
     var w = parseInt(detections._box._width)
     var x = parseInt(detections._box._x)
     var y = parseInt(detections._box._y)
+
+    if(w>h){
+        x=x+(w-h)/2;
+        w=h;
+    }
 
     // draw detections into the canvas
     //faceapi.draw.drawDetections(canvas, resizedDetections)
@@ -279,7 +349,7 @@ function GetTensorFromCanvas(x,y,w,h) {
     }
     var faceImg=document.getElementById("face");
     faceImg.src = canvas.toDataURL(canvas);
-    tensor_image=preprocessImage(canvas); 
+    tensor_image=preprocessImage(canvas);
     return tensor_image;
 }
 
@@ -291,3 +361,15 @@ function preprocessImage(image){
     let offset_sub = tf.scalar(1.0);
     return tensor.div(offset_div).sub(offset_sub).expandDims();
 }
+
+function downloadCanvas() {
+    //let canvas = document.getElementById("canvas");
+    console.log("downloadCanvas():"+canvas.width);
+    let link = document.createElement("a");
+    link.href = canvas.toDataURL("png");
+    link.download = "Begyaru.png";
+    link.click();
+}
+
+
+

@@ -1,0 +1,79 @@
+html, body {
+    height: 100%;
+}
+body {
+    background-color: #fff;
+}
+
+#camera {
+    background-color: #333;
+}
+
+#camera_button {
+    background-color: #333;
+}
+
+video {
+    max-width: 100%;/* はみ出ないように */
+}
+
+#camera_field div{
+    /*font-size: 0;
+    line-height: 0;*/
+    display: inline-block;
+    max-width: 100%;/* はみ出ないように */
+}
+
+img{
+    max-width: 100%;
+}
+
+.photo-button {
+    width: 75px;
+    height: 75px;
+    position: relative;
+}
+.circle {
+    position: absolute;
+    top: 14%;
+    left: 14%;
+    bottom: 14%;
+    right: 14%;
+    border-radius: 100%;
+    background-color: #ffffff;
+    opacity: 0;
+}
+.ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    border-radius: 100%;
+    border: 0.5em solid #ffffff;
+    opacity: 0.8;
+}
+.photo-button .circle, .photo-button .ring {
+    transition: all 0.25s;
+}
+.photo-button:hover .circle {
+    opacity: 1;
+}
+.photo-button:active .ring {
+    opacity: 1;
+}
+.photo-button:active .circle {
+    opacity: 0.5;
+}
+
+label{
+    display: inline-block;
+    background-color: lightcoral;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 0rem;
+}
